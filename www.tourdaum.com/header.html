@@ -1,0 +1,106 @@
+<!-- [s]header -->
+
+<script>
+    function fnSearch() {
+        var keyWord = $("#searchKeyWord").val();
+        if (keyWord == "") {
+            alert("검색어를 입력해주세요.");
+        } else {
+            location.href =
+                "/Product/ProductSearchList?keyWord=" +
+                encodeURIComponent(keyWord);
+        }
+    }
+</script>
+<div class="header_wrap">
+    <!-- 2102 header를 감싸는 div 추가-->
+    <!-- header -->
+    <div id="header">
+        <div class="logo">
+            <a href="index.html"><img src="Resources/images/logo.png" alt="여행다움" /></a>
+        </div>
+        <div class="header_sch">
+            <input type="text" name="searchKeyWord" id="searchKeyWord" placeholder="검색어를 입력하세요" value=""
+                onkeypress="javascript: if (event.keyCode == 13) fnSearch();" />
+            <button onclick="fnSearch()" title="검색"></button>
+        </div>
+        <!-- 로그인, -->
+    </div>
+    <!-- //header -->
+</div>
+
+<!-- nav -->
+<!-- <div id="nav">
+    <ul>
+      <li>
+        <a href="Product/ProductList3a99.html?divCd=D" id="top_Product_D">패키지</a>
+      </li>
+      <li>
+        <a href="Product/ProductList9e6b.html?divCd=N" id="top_Product_N">여행지</a>
+      </li>
+
+      <li>
+        <a href="Product/PlanProductList.html" id="top_PlanProduct">이벤트</a>
+      </li>
+      <li>
+        <a href="Product/ProductLocationList.html" id="top_Location">지역여행</a>
+      </li>
+      <li>
+        <a href="Customer/NoticeList.html" id="top_notice">고객센터</a>
+      </li>
+    </ul>
+    <div class="bnr">
+      <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyGrade"><img
+          src="Resources/images/bnr_nav.png" alt="스탬프모으면 공짜여행!" /></a>
+    </div>
+  </div> -->
+<div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="navigation">
+        <div class="navArea">
+            <ul>
+                <li>
+                    <a href="Product/ProductList3a99.html?divCd=D" id="top_Product_D"
+                        onmouseenter="changeImage('../img/img1.jpg')">패키지</a>
+                </li>
+                <li>
+                    <a href="Product/ProductList9e6b.html?divCd=N" id="top_Product_N"
+                        onmouseenter="changeImage('../img/img2.jpg')">여행지</a>
+                </li>
+                <li>
+                    <a href="Product/PlanProductList.html" id="top_PlanProduct"
+                        onmouseenter="changeImage('../img/img3.jpg')">이벤트</a>
+                </li>
+                <li>
+                    <a href="Product/ProductLocationList.html" id="top_Location"
+                        onmouseenter="changeImage('../img/img4.jpg')">지역여행</a>
+                </li>
+                <li>
+                    <a href="Customer/NoticeList.html" id="top_notice"
+                        onmouseenter="changeImage('../img/img6.jpg')">고객센터</a>
+                </li>
+            </ul>
+        </div>
+        <div class="imgArea">**
+            <img src="../img/img1.jpg" id="slider">
+        </div>
+    </div>
+</div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+<script>
+    function changeImage(anything) {
+        document.getElementById('slider').src = anything;
+    }
+
+    function openNav() {
+        document.body.style.overflow = "hidden";
+        document.getElementById("myNav").style.width = "100%";
+    }
+
+    function closeNav() {
+        document.body.style.overflow = "";
+        document.getElementById("myNav").style.width = "0%";
+    }
+</script>
+<!-- //nav -->

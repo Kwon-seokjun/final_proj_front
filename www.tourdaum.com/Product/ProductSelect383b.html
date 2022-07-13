@@ -1,0 +1,1418 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.tourdaum.com/Product/ProductSelect?productId=DN0023 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jul 2022 15:42:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>여행을 여행답게, 여행다움</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:title" content="여행을 여행답게, 여행다움">
+    <meta property="og:description" content="액티브 시니어를 위한 프리미엄 테마 여행, 여행을 여행답게, 여행다움입니다.">
+    <meta property="og:image" content="http://m.tourdaum.com/Error/Oops404/404">
+    <meta property="og:url" content="http://m.tourdaum.com/">
+    <link rel="shortcut icon" href="../Resources/Images/favicon.ico" />
+    <link href="../Resources/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../Resources/css/bxslider.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&amp;subset=korean">
+    <script type="text/javascript" src="../Resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../Resources/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="../Resources/js/common.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
+    <!-- Global site tag (gtag.js) - Google Ads: 681620318 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-681620318"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'AW-681620318');</script>
+
+    <script type="text/javascript" charset="UTF-8" src="../../t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript">
+        kakaoPixel('7065337229126516084').pageView();
+    </script>
+    <script type="text/javascript">
+        //모바일웹 분기
+        if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/Windows CE/i)) || (navigator.userAgent.match(/Symbian/i)) || (navigator.userAgent.match(/BlackBerry/i)) || (navigator.userAgent.match(/Android/i))) {
+            //현재URL
+            var currentPage = document.location.href
+            if (currentPage.match(/www.tourdaum.com/i)) {
+                document.location.replace(currentPage.replace("www.tourdaum.com", "m.tourdaum.com"));
+            }
+
+        }
+
+        $(function () {
+            var topSelect = "개별체험학습";
+            $("#top_" + topSelect).addClass("on");
+
+            //210121 본상품 조회용
+            //fnViewPdList();
+
+            
+            });
+        function setCookie(name, value, expiredays) {
+            var todayDate = new Date();
+            todayDate.setDate(todayDate.getDate() + expiredays);
+            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+        }
+
+        function getCookie(name) {
+            var nameOfCookie = name + "=";
+            var x = 0;
+            while (x <= document.cookie.length) {
+                var y = (x + nameOfCookie.length);
+                if (document.cookie.substring(x, y) == nameOfCookie) {
+                    if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+                        endOfCookie = document.cookie.length;
+                    return unescape(document.cookie.substring(y, endOfCookie));
+                }
+
+                x = document.cookie.indexOf(" ", x) + 1;
+                if (x == 0)
+                    break;
+            }
+            return "";
+        }
+
+        function fnPopClose() {
+            setCookie("pop_eventBtn", "done", 1);
+            $('.btnEvent').hide();
+        }
+        function placeBannerCount(link, seq) {
+            //배너 조회수 증가
+            fnBannerCount(seq, "2");
+            //해당페이지로 이동
+            document.location.href = link;
+        }
+
+        fnMainBannerLink = function (link, seq) {
+            //배너 조회수 증가
+            fnBannerCount(seq, "1");
+            //해당페이지로 이동
+            document.location.href = link;
+        }
+
+        fnBannerCount = function (seq, gubun) {
+            $.ajax({
+                type: "POST",
+                url: "/Etc/BannerCount",
+                data: ({ "seq": seq, "gubun": gubun }),
+                dataType: "json",
+                success: function (data) {
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+
+        function goGrade() {
+            document.location.href = "https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyGrade";
+        }
+        function ChkMagazineYn() {
+            var userId = $("#mChkId").val();
+            $.ajax({
+                type: "POST",
+                url: "/Mypage/UserMagazineYn",
+                data: ({ "userId": userId }),
+                dataType: "json",
+                success: function (data) {
+                    if (data > 0) {
+                        MagazineYnUpd(userId);
+                    }
+                    else {
+                        alert("현재 무료 구독 신청이 완료된 상태입니다. 무료 구독이 해제되신 경우에만 재구독 신청이 가능합니다.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+        function MagazineYnUpd(userId) {
+            if (!confirm('매거진 재구독을 신청하시겠습니까?')) {
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Mypage/UserMagazineYnUpd",
+                data: ({ "userId": userId }),
+                dataType: "json",
+                success: function (data) {
+                    if (data > 0) {
+                        alert("정상 신청되셨습니다. 1년간 총 4회 발송되며, 1년간 로그인 이력이 없으면 자동 구독 해제됩니다. 여행다움과 함께 행복하고 즐거운 여행하세요. 감사합니다.");
+                    }
+                    else {
+                        alert("");
+                    }
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+
+        //function fnViewPdList() {
+        //    var pdlist = getCookie("pdViewList");
+        //    if (pdlist != null && pdlist != "") {
+        //        $.ajax({
+        //            type: "POST",
+        //            url: "/Product/ProductViewList",
+        //            data: ({ "pdlist": pdlist }),
+        //            dataType: "json",
+        //            success: function (data) {
+        //                fnViewPdListDisplay(data)
+        //            },
+        //            error: function (xhr, status, error) {
+        //            }
+        //        });
+        //    }
+        //}
+
+        //fnViewPdListDisplay = function (data, page) {
+        //    var _totalCount = data.length;
+        //    var listData = "";
+        //    var target = $("#pdViewList");
+
+        //    //target.empty();
+        //    if (_totalCount == 0) {
+        //        target.append("");
+        //    } else {
+        //        var html = [];
+        //        html.push(
+        //            " <span>",
+        //            "   <a href='/Product/ProductSelect?productId={0}'>",
+        //            "       <img src='{1}{2}'/>",
+        //            "       <div>",
+        //            "          <p class='toe'>{6}</p>",
+        //            "          <span class='category {9}'>{4}</span>",
+        //            "          <span class='price'><strong>{7}</strong>원~</span>",
+        //            "          <span {8} class='mission'>미션</span>",
+        //            "       </div>",
+        //            "   </a>",
+        //            "</span>"
+        //        );
+        //        listhtml = html.join("");
+
+        //        var categoryClass = "";
+        //        for (i = 0; i < _totalCount; i++) {
+
+        //            if (data[i].DivCd == "N") {
+        //                categoryClass = "stay"
+        //            }
+        //            else {
+        //                categoryClass = "day"
+        //            }
+        //            var icon = "";
+        //            if (data[i].SpecialYn != "Y") {
+        //                icon = "style='display:none;'"
+        //            }
+        //            listData = util.format(listhtml, data[i].ProductId, data[i].ThumbFilePath, data[i].ThumbFileNm,
+        //                data[i].DivCd, data[i].DivNm, data[i].ProductDesc, data[i].ProductNm, data[i].SellPrice, icon, categoryClass);
+        //            target.append(listData);
+        //        }
+        //    }
+
+
+        //}
+    </script>
+    
+    <script type="text/javascript" src="http://static.tagmanager.toast.com/tag/view/1798"></script>
+    <script type="text/javascript">
+ window.ne_tgm_q = window.ne_tgm_q || [];
+ window.ne_tgm_q.push(
+ {
+     tagType: 'detail',
+     device:'web'/*web, mobile, tablet*/,
+     uniqValue:'',
+     pageEncoding:'utf-8',
+     items : [{
+         id: "DNP0901"/*ID값입력*/,
+         price:"1"/*가격정보입력*/,
+         quantity:"1"/*갯수정보입력*/,
+         category:"숙박여행"/*카테고리 대|중|소*/,
+         imgUrl:"http://www.tourdaum.com/upload/product/유채꽃.jpg"/*img링크값입력 ex)http://example.com/img/img.jpg*/,
+         name:"매력퐁당 힐링제주 3일"/*제품명또는 전환메뉴명입력*/,
+         desc:""/*상품상세 설명 text*/,
+         link:"http://www.tourdaum.com/Product/ProductSelect?productId=DNP0901"/*상품상세페이지 URL ex)http://example.com/detail/product.html*/
+     }]
+ });
+    </script>
+    <!-- WIDERPLANET  SCRIPT START 2021.6.9 -->
+    <div id="wp_tg_cts" style="display:none;"></div>
+    <script type="text/javascript">
+        var wptg_tagscript_vars = wptg_tagscript_vars || [];
+        wptg_tagscript_vars.push(
+            (function () {
+                return {
+                    wp_hcuid: "",  	/*고객넘버 등 Unique ID (ex. 로그인  ID, 고객넘버 등 )를 암호화하여 대입.
+                     *주의 : 로그인 하지 않은 사용자는 어떠한 값도 대입하지 않습니다.*/
+                    ti: "52102",
+                    ty: "Item",
+                    device: "web"
+                    , items: [{ i: "DNP0901", t: "매력퐁당 힐링제주 3일" }] /* i:<상품 식별번호  (Feed로 제공되는 상품코드와 일치하여야 합니다 .) t:상품명  */
+                };
+            }));
+    </script>
+    <script type="text/javascript" async src="../../cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+    <!-- // WIDERPLANET  SCRIPT END 2021.6.9 -->
+    <!-- ADN Tracker[상품] start -->
+    <script type="text/javascript">
+        var adn_param = adn_param || [];
+        adn_param.push([{
+            ui: '103614',
+            ut: 'Item',
+            items: [{ i: "DNP0901" }]
+        }]);
+    </script>
+    <script type="text/javascript" defer="" src="../../fin.rainbownine.net/js/adn_tags_2.1.3.js"></script>
+    <!-- ADN Tracker[상품] end -->
+    <!-- AceCounter Mobile eCommerce (Product_Detail) v8.0 Start -->
+    <script language='javascript'>
+        var m_pd = "매력퐁당 힐링제주 3일";
+        var m_ct = "숙박여행";
+        var m_amt = "";
+    </script>
+    <!-- Enliple Tracker Start -->
+    <script type="text/javascript">
+        var ENP_VAR = {
+            collect: {},
+            conversion: { product: [] }
+        };
+        ENP_VAR.collect.productCode = "DNP0901";
+        ENP_VAR.collect.productName = "매력퐁당 힐링제주 3일";
+        ENP_VAR.collect.price = '1';
+        ENP_VAR.collect.dcPrice = '1';
+        ENP_VAR.collect.soldOut = 'N';
+        ENP_VAR.collect.imageUrl = '../upload/product/%ec%9c%a0%ec%b1%84%ea%bd%83.jpg';
+        ENP_VAR.collect.topCategory = "국내";
+        ENP_VAR.collect.firstSubCategory = "숙박여행";
+        ENP_VAR.collect.secondSubCategory = '';
+        ENP_VAR.collect.thirdSubCategory = '';
+
+        (function (a, g, e, n, t) { a.enp = a.enp || function () { (a.enp.q = a.enp.q || []).push(arguments) }; n = g.createElement(e); n.async = !0; n.defer = !0; n.src = "../../cdn.megadata.co.kr/dist/prod/enp_tracker_self_hosted.min.js"; t = g.getElementsByTagName(e)[0]; t.parentNode.insertBefore(n, t) })(window, document, "script");
+        /* 상품수집 */
+        enp('create', 'collect', 'kyowontravel', { device: 'W' });
+    </script>
+    <!-- Enliple Tracker End -->
+    <script src="../Error/Oops404/404.html"></script>
+    <script src="../../developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="../../developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <meta property="og:image" content="http://www.tourdaum.com/upload/product/유채꽃.jpg">
+    <script type='text/javascript'>
+        //<![CDATA[
+        // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('974078571f0a51ffe99056dc3b74ad28');
+        // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+        function sendLink(pNm, pId) {
+            Kakao.Link.sendDefault({
+                objectType: 'feed',
+                content: {
+                    title: pNm,
+                    //description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+                    imageUrl: 'http://www.tourdaum.com/upload/product/유채꽃.jpg',
+                    link: {
+                        mobileWebUrl: 'http://m.tourdaum.com/',
+                        webUrl: 'http://www.tourdaum.com/'
+                    }
+                },
+                //social: {
+                //    likeCount: 286,
+                //    commentCount: 45,
+                //    sharedCount: 845
+                //},
+                buttons: [
+                    {
+                        title: '상세보기',
+                        link: {
+                            mobileWebUrl: 'http://m.tourdaum.com/Product/ProductSelect?productId=' + pId,
+                            webUrl: 'http://www.tourdaum.com/Product/ProductSelect?productId=' + pId
+                        }
+                    },
+                    {
+                        title: '다른 상품보기',
+                        link: {
+                            mobileWebUrl: 'http://m.tourdaum.com/Product/ProductList?divCd=D',
+                            webUrl: 'http://www.tourdaum.com/Product/ProductList?divCd=D'
+                        }
+                    }
+                ]
+            });
+        }
+        //]]>
+    </script>
+    <script type="text/javascript" src="../Error/Oops404/404.html"></script>
+    <script>
+        var date = new Date();
+        //현재날짜
+        var currentDt = util.formatDate(date, "yyyy-MM-dd");
+        $(document).ready(function () {
+            // 초기 데이터 SET
+            var y = "2022" * 1;
+            var m = "07" * 1;
+            var d = "08" * 1;
+            showCalendar(y, m, d, 1); // 달력  SET
+            fnGoodsListLoad(); // 행사리스트  SET
+            changeGoods('2022070813'); // 행사정보, 가격   SET
+
+            // 인원 체크
+            $("#selOrderNum").change(function () {
+                var orderNum = $("#selOrderNum").val();
+                var sellPrice = $("#viewSellPriceVal").val();
+                setViewPrice(sellPrice, orderNum);
+            });
+        });
+        function is_ie() {
+            if (navigator.userAgent.toLowerCase().indexOf("chrome") != -1) return false;
+            if (navigator.userAgent.toLowerCase().indexOf("msie") != -1) return true;
+            if (navigator.userAgent.toLowerCase().indexOf("windows nt") != -1) return true;
+            return false;
+        }
+        function ClipCode() {
+            var ProductId = $("#ProductId").val();
+            var code = "http://www.tourdaum.com/Product/ProductSelect?productId=" + ProductId;
+            if (is_ie()) {
+                window.clipboardData.setData("Text", code);
+                alert("코드가 복사되었습니다. \'Ctrl+V\'를 눌러 붙여넣기 해 주세요.");
+                return;
+            } else { temp = prompt("이 글의 주소입니다. 복사를 눌러서 클립보드로 복사하세요.", code); }
+        }
+        function fnGoOrder() {
+            var OrderNum = $("#selOrderNum").val();
+            var DivCd = $("#DivCd").val();
+            //if (DivCd == "N" && OrderNum < 2) {
+            //    alert("숙박여행은 2인이상 예약 가능합니다."); return;
+            //}
+            var GoodsId = $("#GoodsId").val();
+            if (GoodsId == "") {
+                alert("행사 선택하세요."); return;
+            }
+            var ProductId = $("#ProductId").val();
+            var rtnUrl = encodeURIComponent("/Product/ProductSelect?productId=" + ProductId);
+            location.href = "/Order/Order?goodsId=" + GoodsId + "&orderNum=" + OrderNum+"&returnUrl=" + rtnUrl;
+        }
+        // 행사 변경 시
+        function changeGoods(gid) {
+            var orderNum = $("#selOrderNum").val() * 1;
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/Goods/GoodsSelect",
+                data: ({ "goodsId": gid }),
+                success: function (data) {
+                    $("#GoodsId").val(data.GoodsId);
+                    setViewGoodsData(data);
+                    setViewPrice(data.SellPrice * 1, orderNum);
+                },
+                error: function (xhr, status, error) {
+                    //alter('xhr');
+                    alert("오류가 발생했습니다. 지속적으로 오류가 발생하면 담당자에게 문의 하십시오.");
+                }
+            });
+
+        }
+        // 가격 SET
+        function setViewPrice(sellPrice, orderNum) {
+            $("#viewSellPrice").html(numberWithCommas(sellPrice));
+            $("#viewSellPriceVal").val(sellPrice);
+            $("#viewTotalPrice").html(numberWithCommas(sellPrice * orderNum));
+        }
+        // 행사정보 SET
+        function setViewGoodsData(data) {
+            if (data.DivCd == "D") {
+                $("#viewDiffDays").html("당일");
+            }
+            else {
+                $("#viewDiffDays").html(data.Nights + "박 " + data.Days + "일");
+            }
+            //$("#viewGoodsId").html(data.FrontProductId+'-'+data.ProductId);
+            $("#viewGoodsId").html(data.FrontProductId);
+            $("#viewGoodsDt").html(data.GoodsDt);
+            $("#viewGoodsEndDt").html(data.GoodsEndDt);
+            $("#viewStartTime").html(data.StartTime);
+            $("#viewEndTime").html(data.EndTime);
+            $("#viewStateNm").html(data.StatusNm);
+            $("#viewOrderNum").html(data.OrderNum);
+            $("#viewMaxNum").html(data.MaxNum);
+            $("#viewMinNum").html(data.MinNum);
+
+            var status = "";
+            $("#chkBooking").show();
+            if (data.StatusCd == "1") { status = "evWait"; }
+            else if (data.StatusCd == "2") { status = "evConfirm"; }
+            else { status = "evCancel"; $("#chkBooking").hide();}
+            if (data.StatusNm == "예약마감") { status = "evEnd"; $("#chkBooking").hide(); }
+            $('#viewStateNm').addClass(status)
+        }
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+
+
+        //달력
+         function showCalendar(y, m, d, num) {
+            var eventdays = new Array();
+            var yyyyMM = y + "-" + m
+            if (m < 10) {
+                var yyyyMM = y + "-0" + m;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Goods/GoodsSchedule",
+                data: ({ "yyyyMM": yyyyMM, "productId": "DN0023" }),
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    var _totalCount = data.length;
+                    for (i = 0; i < _totalCount; i++) {
+                        var date = new Date(data[i].GoodsDt);
+                        //alert(date.getDate());
+                        eventdays[date.getDate()] = 1;
+                    }
+                    displayCalendar(y, m, d, eventdays, num);
+                },
+                error: function (xhr, status, error) {
+                    alert(error);
+                }
+            });
+        }
+
+        function displayCalendar(y, m, d, days, num) {
+            var calTitle = "";
+            var html = [];
+            //년월 선택
+            html.push("<a onclick=\"showCalendar(" + (m == 1 ? (y - 1) + "," + 12 : y + "," + (m - 1)) + "," + d + "," + num + "); return false;\" class='prev'></a>",
+                "<span>" + y + "년 " + m + "월</span>",
+                "<a onclick=\"showCalendar(" + (m == 12 ? (y + 1) + "," + 1 : y + "," + (m + 1)) + "," + d + "," + num + "); return false;\" class='next'></a>"
+            );
+            var target = $("#calmonth" + num);
+            target.empty();
+            target.append(html.join(""));
+
+            //달력
+            var listData = '';
+            var d1 = (y + (y - y % 4) / 4 - (y - y % 100) / 100 + (y - y % 400) / 400 + m * 2 + (m * 5 - m * 5 % 9) / 9 - (m < 3 ? y % 4 || y % 100 == 0 && y % 400 ? 2 : 3 : 4)) % 7;
+            //var start_date = "2016-05-10";
+            var cdate = "";
+
+            listData = "<tr>";
+            for (i = 0; i < 42; i++) {
+                if (i % 7 == 0) listData += '</tr>\n<tr>';
+                if (i < d1 || i >= d1 + (m * 9 - m * 9 % 8) / 8 % 2 + (m == 2 ? y % 4 || y % 100 == 0 && y % 400 ? 28 : 29 : 30))
+                    listData += '<td></td>';
+                else {
+                    cdate = y + '-' + ((m < 10) ? ('0' + m) : m) + '-' + (((i + 1 - d1) < 10) ? ('0' + (i + 1 - d1)) : (i + 1 - d1));
+                    var s1 = "";
+                    //alert(currentDt);
+                    if (days[eval(i + 1 - d1)] == 1) {
+                        s1 = "exp";
+                        //if (currentDt == cdate) {
+                        //    s1 = "both";
+                        //}
+                        listData += '<td  class="' + s1 + '" onclick="fnDaySel(\'' + y + '-' + ((m < 10) ? ('0' + m) : m) + '-' + (((i + 1 - d1) < 10) ? ('0' + (i + 1 - d1)) : (i + 1 - d1)) + '\',' + (i + 1 - d1) + '); return false;"><a href="javascript:void(0)" id="day' + (i + 1 - d1) + '">' + (i + 1 - d1) + '</a></td>';
+                    }
+                    else {
+                        if (currentDt == cdate) {
+                            s1 = "today";
+                        }
+                        else {
+                            s1 = "close";
+                        }
+                        listData += '<td class="' + s1 + '"><a href="javascript:void(0)" id="day' + (i + 1 - d1) + '" >' + (i + 1 - d1) + '</a></td>';
+                    }
+                }
+            }
+            listData += "</tr>";
+            //alert(listData);
+            $("#view_calendar" + num + " tbody").empty();
+            $("#view_calendar" + num + " tbody").append(listData);
+        }
+        function fnDaySel(clickDay, day) {
+            // 날짜 클릭하면 선택된 날짜에 테두리 생김
+            var dayId = $("#day" + day);
+
+            if ($(dayId).hasClass('sel')) {
+            }
+            else {
+                $(".cmm_cal_box a").removeClass('sel');
+                $(dayId).addClass('sel');
+            }
+
+            $.ajax({
+            type: "POST",
+                url: "/Goods/GoodsCalList",
+            dataType: 'json',
+            data: ({ "goodsDt": clickDay, "productId": "DN0023", "page":1 }),
+                success: function (data) {
+                $("#GoodsDt").val(clickDay);
+                $("#page").val(1);
+                fnGoodsListDisplay(data, "1");
+                $("#page").val(2);
+            }
+            });
+        }
+
+        function fnGoodsListLoad() {
+            var GoodsDt = $("#GoodsDt").val();
+            var page = $("#page").val();
+            $.ajax({
+            type: "POST",
+                url: "/Goods/GoodsList",
+            dataType: 'json',
+                data: ({ "goodsDt": GoodsDt, "productId": "DN0023", "page": page }),
+                success: function (data) {
+                fnGoodsListDisplay(data, "2");
+                $("#page").val(page*1+1);
+            }
+            });
+        }
+        fnGoodsListDisplay = function (data, gubun) {
+        var _totalCount = data.length;
+        var listData = "";
+        var target = $("#goodsList");
+        var page = $("#page").val();
+        if(gubun =="1")
+        {
+        target.empty();
+        }
+
+        if (_totalCount == 0) {
+            //alert("선택");
+            //listData = "<tr><td colspan='5'>해당 검색 내용이 없습니다.</td></tr>";
+            //target.append(listData);
+            $("#listMore").hide();
+        } else {
+            var html = [];
+            html.push(
+                "<tr>",
+                "   <td><input type=\"{10}\" name='gid' id='gid_{6}' value='{6}' {7} onclick='changeGoods(\"{6}\")' ><label for='gid_{6}'><span></span></label></td> ",
+                "   <td> {0} {1} </td>",
+                "   <td> {2} {3} </td>",
+                "   <td> {8}박 {9}일 </td>",
+                "   <td> 항공 </td>",
+                "   <td> {4}원 </td>",
+                "   <td  class='{11}'>{12}/{13}<br>{5}</td>",
+                "</tr>"
+            );
+            listhtml = html.join("");
+            var classAdd = "";
+            var checkAdd = "";
+            var checkIndex = 0;
+            var radioAdd = "";
+            var statusNm = "";
+            for (i = 0; i < _totalCount; i++) {
+                rowNum = data[i].TotalCount - ((page - 1) * 5);
+                if (rowNum -i == 1){
+                    $("#listMore").hide();}
+                else{
+                    $("#listMore").show();}
+
+                statusNm = data[i].StatusNm;
+
+                if (data[i].StatusNm == "예약가능") {
+                    if (data[i].MinNum <= data[i].OrderNum) {
+                        classAdd = "startIng";
+                        statusNm = "출발가능"
+                    }
+                    else {
+                        classAdd = "ing";
+                    }
+                    radioAdd = "radio";
+                }
+                else if (data[i].StatusNm == "출발확정") {
+                    classAdd = "fix";
+                    radioAdd = "radio";
+                }
+                else{
+                    classAdd = "close";
+                    radioAdd = "hidden";
+                }
+
+                if (data[i].StatusNm != "예약마감" && checkIndex < 1 && page < 2) {
+                    checkAdd = "checked";
+                    checkIndex = 99;
+                    changeGoods(data[i].GoodsId);
+                    console.log(data[i].GoodsId);
+                }
+                else {
+                    checkAdd = "";;
+                }
+                listData = util.format(listhtml, data[i].GoodsDt, data[i].StartTime, data[i].GoodsEndDt, data[i].EndTime, numberWithCommas(data[i].SellPrice), statusNm, data[i].GoodsId
+                    , checkAdd, data[i].Nights, data[i].Days, radioAdd, classAdd,data[i].OrderNum, data[i].MaxNum);
+                target.append(listData);
+            }
+        }
+    }
+    </script>
+
+</head>
+<body>
+    <input type="hidden" id="mChkId" value="1" />
+    <!-- [s]top-->
+    <!--//[e]top-->
+    <div id="wrap">
+        <!-- mask -->
+        <div id="mask"><div class="layerWindow"></div></div>
+        <!-- //mask -->
+
+        <!-- 210121 본상품 조회용 -->
+        
+        <!-- 210121 본상품 조회용 -->
+        <!-- [s]header -->
+        
+
+<script>
+    function fnSearch() {
+        var keyWord = $("#searchKeyWord").val();
+        if (keyWord == "") {
+            alert("검색어를 입력해주세요.");
+        }
+        else {
+            location.href = "/Product/ProductSearchList?keyWord=" + encodeURIComponent(keyWord);
+        }
+
+    }
+</script>
+<div class="header_wrap">
+    <!-- 2102 header를 감싸는 div 추가-->
+    <!-- header -->
+    <div id="header">
+        <div class="logo">
+            <a href="../index.html"><img src="../Resources/images/logo.png" alt="여행다움"></a>
+        </div>
+        <div class="header_sch">
+            <input type="text" name="searchKeyWord" id="searchKeyWord" placeholder="검색어를 입력하세요"  value="" onkeypress="javascript: if (event.keyCode == 13) fnSearch();">
+            <button onclick="fnSearch()" title="검색"></button>
+        </div>
+        <div class="header_right">
+
+                <a href="https://www.tourdaum.com:4465/Member/JoinHub" class="">회원가입</a>
+                <a href="https://www.tourdaum.com:4465/Login/Index" class="">로그인</a>
+        </div>
+    </div>
+    <!-- //header -->
+</div>
+
+<!-- nav -->
+<div id="nav">
+    <ul>
+        <li><a href="ProductList3a99.html?divCd=D" id="top_Product_D">당일여행</a></li>
+        <li><a href="ProductList9e6b.html?divCd=N" id="top_Product_N">숙박여행</a></li>
+        
+        <li><a href="PlanProductList.html" id="top_PlanProduct">기획전</a></li>
+        <li><a href="ProductLocationList.html" id="top_Location">지역여행</a></li>
+        <li><a href="../Customer/NoticeList.html" id="top_notice">고객센터</a></li>
+    </ul>
+    <div class="bnr">
+        <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyGrade"><img src="../Resources/images/bnr_nav.png" alt="스탬프모으면 공짜여행!"></a>
+    </div>
+</div>
+<!-- //nav -->
+
+        <!-- [e]header -->
+            <!-- sub_location-->
+            <!--// sub_location-->
+
+        <!-- [s]contents -->
+            <div id="container">
+                <div id="contents">
+                    
+
+
+
+
+
+<!-- [s]contents -->
+
+<input type="hidden" name="page" id="page" value="1" />
+<input type="hidden" name="GoodsId" id="GoodsId" value="" />
+<input type="hidden" name="ProductId" id="ProductId" value="DN0023" />
+<input type="hidden" name="DivCd" id="DivCd" value="N" />
+<input type="hidden" name="GoodsDt" id="GoodsDt" value="2022-07-08" />
+<div class="pdt_detail">
+    <div class="view_title">
+        매력퐁당 힐링제주 3일
+        <p>패키지는 제주에서 부터, 한번에 즐기는 제주 맛과 멋</p>
+        <div class="btn">
+            <a href="javascript:sendLink('매력퐁당 힐링제주 3일','DN0023')" title="카톡공유"></a>
+            <a href="javascript:ClipCode()" title="URL복사"></a>
+        </div>
+    </div>
+    <!-- 상품이미지 -->
+    <div class="pdt_view">
+        <span class='mission'>미션</span>
+        <ul id="bxslider">
+
+                
+                    <li>
+                        <img src='../upload/product/%ec%9c%a0%ec%b1%84%ea%bd%83_1.jpg' />
+                    </li>
+                
+                            
+                    <li>
+                        <img src='../upload/product/thujeju02.jpg' />
+                    </li>
+                
+                            
+                    <li>
+                        <img src='../upload/product/%ea%b7%b8%eb%a6%bc%ec%b9%b4%ed%8e%98.jpg' />
+                    </li>
+                
+                            
+                    <li>
+                        <img src='../upload/product/%ec%98%a4%ec%84%a4%eb%a1%9d.jpg' />
+                    </li>
+                
+                            
+                    <li>
+                        <img src='../upload/product/%ec%8a%a4%ed%85%90%eb%8b%a4%eb%93%9c%ed%8a%b8%ec%9c%88.jpg' />
+                    </li>
+                
+                            
+                    <li>
+                        <img src='../upload/product/%ec%99%b8%ea%b4%80.jpg' />
+                    </li>
+                
+        </ul>
+        <!-- The thumbnails -->
+        <ul id="bxslider-pager">
+                
+                    <li data-slideIndex="0" class="active">
+                        <a href="javascript:void(0);"> <img src='../upload/product/%ec%9c%a0%ec%b1%84%ea%bd%83_1.jpg' /></a>
+                    </li>
+                
+                            
+                    <li data-slideIndex="1" class="">
+                        <a href="javascript:void(0);"> <img src='../upload/product/thujeju02.jpg' /></a>
+                    </li>
+                
+                            
+                    <li data-slideIndex="2" class="">
+                        <a href="javascript:void(0);"> <img src='../upload/product/%ea%b7%b8%eb%a6%bc%ec%b9%b4%ed%8e%98.jpg' /></a>
+                    </li>
+                
+                            
+                    <li data-slideIndex="3" class="">
+                        <a href="javascript:void(0);"> <img src='../upload/product/%ec%98%a4%ec%84%a4%eb%a1%9d.jpg' /></a>
+                    </li>
+                
+                            
+                    <li data-slideIndex="4" class="">
+                        <a href="javascript:void(0);"> <img src='../upload/product/%ec%8a%a4%ed%85%90%eb%8b%a4%eb%93%9c%ed%8a%b8%ec%9c%88.jpg' /></a>
+                    </li>
+                
+                            
+                    <li data-slideIndex="5" class="">
+                        <a href="javascript:void(0);"> <img src='../upload/product/%ec%99%b8%ea%b4%80.jpg' /></a>
+                    </li>
+                
+        </ul>
+    </div>
+    <!-- //상품이미지 -->
+    <div class="pdt_info">
+        <dl>
+            <dt>상품코드</dt>
+            <dd><spn id="viewGoodsId"></spn></dd>
+        </dl>
+        <dl>
+            <dt>여행기간</dt>
+            <dd>
+                <spn id="viewDiffDays"></spn>
+                <p class="term">
+                    출발 | <spn id="viewGoodsDt"></spn> <spn id="viewStartTime"></spn> <br>
+                    도착 | <spn id="viewGoodsEndDt"></spn>   <spn id="viewEndTime"></spn>
+                </p>
+                <button class="btn_blue">다른 일정 보기</button>
+            </dd>
+        </dl>
+        <dl>
+            <dt>교통수단</dt>
+            <dd>항공</dd>
+        </dl>
+        <dl>
+            <dt>탑승지</dt>
+            
+            <dd>
+                <button class="btn_blue" onclick="tabDepartView()">탑승지 상세보기</button>
+            </dd>
+        </dl>
+        <dl>
+            <dt>예약현황</dt>
+            <dd>예약 :  <spn id="viewOrderNum"></spn>명 (최소출발인원 <spn id="viewMinNum"></spn>명 / 최대인원 <spn id="viewMaxNum"></spn>명)</dd>
+        </dl>
+        <dl>
+            <dt>전화문의</dt>
+            <dd>정성을 다하는 여행다움 고객센터  <p>02 -1855 -3355</p></dd>
+        </dl>
+    </div>
+</div>
+
+<div id="schedule">
+    <h3>여행일자 선택</h3>
+    <!-- calendar -->
+    <div class="calendar">
+        <div class="month" id="calmonth1">
+            
+        </div>
+        <div class="cmm_cal_box">
+            <table id="view_calendar1">
+                <colgroup>
+                    <col span="7" width="20%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>일</th>
+                        <th>월</th>
+                        <th>화</th>
+                        <th>수</th>
+                        <th>목</th>
+                        <th>금</th>
+                        <th>토</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <!-- //calendar -->
+    <!-- list -->
+    <div class="calendar_list">
+        <table>
+            <colgroup>
+                <col width="9%">
+                <col width="19%">
+                <col width="19%">
+                <col width="13%">
+                <col width="10%">
+                <col>
+                <col width="15%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>선택</th>
+                    <th>출발일시</th>
+                    <th>도착일시</th>
+                    <th>기간</th>
+                    <th>교통</th>
+                    <th>가격</th>
+                    <th>상태</th>
+                </tr>
+            </thead>
+            <tbody id="goodsList"></tbody>
+        </table>
+        <button onclick="fnGoodsListLoad();" id="listMore" class="btn_gray">더보기</button>
+    </div>
+    <!-- //list -->
+    <input type="hidden" id="viewSellPriceVal" value="" />
+    <div class="booking" id="chkBooking" style="display:none;">
+        <div>
+            <h3>인원 선택</h3>
+            여행 인원
+            <select name="selOrderNum" id="selOrderNum">
+                        
+                            <option value="1">1</option>
+                        
+                        
+                            <option value="2">2</option>
+                        
+                        
+                            <option value="3">3</option>
+                        
+                        
+                            <option value="4">4</option>
+                        
+                        
+                            <option value="5">5</option>
+                        
+                        
+                            <option value="6">6</option>
+                        
+                        
+                            <option value="7">7</option>
+                        
+                        
+                            <option value="8">8</option>
+                        
+                        
+                            <option value="9">9</option>
+                        
+
+            </select>
+        </div>
+        <div>
+            <h3>총 합계 금액</h3>
+            <span id="viewTotalPrice" class="price"></span>
+            <button onclick="fnGoOrder()" class="btn_red">예약하기</button>
+        </div>
+    </div>
+</div>
+
+<div class="pdt_check">
+    <h3>확인하세요!</h3>
+    <div class="pdt_info type2">
+        <dl>
+            <dt>포함사항</dt>
+            <dd>
+                왕복항공료(14시대출발)및 제반 택스, 호텔 (2인1실), 일정상의 식사, 일정상의 관광지 입장료, 기사/가이드 팁, 생수(1일 1인 1병), 오메기떡, 보리빵, 제주돌하루방초콜릿1Box/1인(6월30일출발자까지제공)
+            </dd>
+        </dl>
+        <dl>
+            <dt>불포함사항</dt>
+            <dd>
+                유류할증료(7월 기준 1인/39,600원), 국내여행자보험,  개인경비, 독실 사용료 (120,000/인)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<!-- 탭 영역 -->
+<div class="tab_wrap">
+    <ul class="view_tab">
+        <li><a href="#none" class="on" onclick="tabView(this, 'tab_1')">상품정보</a></li>
+        <li><a href="#none" onclick="tabView(this, 'tab_2')">여행일정</a></li>
+        
+        <li><a href="#none" onclick="tabView(this, 'tab_4')">취소&middot;환불</a></li>
+        <li><a href="#none" id="v_Depart" onclick="tabView(this, 'tab_5')">탑승지</a></li>
+        <li><a href="#none" onclick="tabView(this, 'tab_6')">여행후기</a></li>
+    </ul>
+    <!-- 상품정보 -->
+    <div id="tab_1" class="tab_cnt on">
+        <div>
+            <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p><img id="기획전국내211210여행다움겨울제주매력퐁당힐링제주기획상품01_3" class="editorImg" src="../upload/product/%ea%b8%b0%ed%9a%8d%ec%a0%84%ea%b5%ad%eb%82%b4211210%ec%97%ac%ed%96%89%eb%8b%a4%ec%9b%80%ea%b2%a8%ec%9a%b8%ec%a0%9c%ec%a3%bc%eb%a7%a4%eb%a0%a5%ed%90%81%eb%8b%b9%ed%9e%90%eb%a7%81%ec%a0%9c%ec%a3%bc%ea%b8%b0%ed%9a%8d%ec%83%81%ed%92%8801_3.jpg" alt="" name="기획전국내211210여행다움겨울제주매력퐁당힐링제주기획상품01_3" /><img id="매력퐁당기획전" class="editorImg" src="../upload/product/%eb%a7%a4%eb%a0%a5%ed%90%81%eb%8b%b9%ea%b8%b0%ed%9a%8d%ec%a0%84.jpg" alt="" name="매력퐁당기획전" /></p>
+</body>
+
+<!-- Mirrored from www.tourdaum.com/Product/ProductSelect?productId=DN0023 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jul 2022 15:43:58 GMT -->
+</html>
+        </div>
+    </div>
+    <!-- //상품정보 -->
+    <!-- 여행일정 -->
+    <div id="tab_2" class="tab_cnt">
+        <div>
+            <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p><strong><span style="font-family: Gulim; font-size: 14pt; color: #993300;">&lt;여행&nbsp;1일차&gt;</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">출발 한시간 전까지 김포공항 국내선&nbsp;2층&nbsp;해당 항공사 카운터에서 개별 수속</span></strong><br /><strong><span style="font-family: Gulim; font-size: 14pt;"> ※신분증 필수지참/미지참 시 탑승 불가(소아/유아-주민등록등본 또는 의료보험증)</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">김포공항&nbsp;(각 출발 공항)&nbsp;개별 출발 <span style="background-color: #ffff00;">(14시대 출발)</span></span></strong><br /><strong><span style="font-family: Gulim; font-size: 14pt;"> (※지방출발을 원하실 경우 담당자에게 문의 부탁 드립니다.)</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">제주공항 도착 후 기사/가이드 미팅&nbsp;후 호텔로 이동</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">체&nbsp;&nbsp;험 - <span style="color: #0000ff;">"</span><span style="color: #0000ff;">아쿠아플라넷"</span></span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 제주의 바다를 그대로 담은 &lsquo;아시아 최대 규모 해양 테마파크&rsquo;</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 아름다운 바다의 별, Aquaplanet 탐험하기~</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">석&nbsp;&nbsp;식 - 향토 한정식 (제육볶음+고등어구이+몸국+두부셀러드)</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">숙&nbsp;&nbsp;박 - 라마다함덕 바이 윈덤 호텔(2인1실/스탠다드 트윈)&nbsp;또는 동급</span></strong></p>
+<p>&nbsp;</p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt; color: #993300;">&lt;여행&nbsp;2일차&gt;</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">조&nbsp;&nbsp;식 - 호텔식</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">관광지 - '서귀 바다와 범섬 담은&nbsp;<span style="color: #0000ff;">자구리 해안 포구+주상절리</span>&nbsp;산책</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">관광지 - '때 묻지 않은&nbsp;NEW&nbsp;명소'&nbsp;<span style="color: #0000ff;">강정 해오름 노을길</span></span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">"미션&nbsp;!!&nbsp;전망대 반환점에서 인증샷을 찍어 주세요&nbsp;(아메리카노 증정)</span></span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">중&nbsp;&nbsp;식 - 향토 한정식&nbsp;(해물탕+옥돔구이)</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">관광지 - 계절마다 다른 얼굴 <span style="color: #0000ff;">카멜리아힐</span>&nbsp;제주 동백, 붉은 빛 물들이기</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">관광지 - "초록빚 찻잎 바다"&nbsp;<span style="color: #0000ff;">오설록 녹차박물관</span>&nbsp;녹차밭 체험</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">휴&nbsp;&nbsp;식 - "나도예술이고 싶다" <span style="color: #0000ff;">그림카페</span>&nbsp;안에서는 어디든 인생작이 된다</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #0000ff;">제주 청귤차 한잔 제공</span>&nbsp;</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">석&nbsp;&nbsp;식 -&nbsp;회정식+통갈치구이</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">숙&nbsp;&nbsp;박 -&nbsp;라마다함덕 바이 윈덤(2인1실/스탠다드 트윈)&nbsp;또는 동급</span></strong></p>
+<p>&nbsp;</p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt; color: #993300;">&lt;여행&nbsp;3일차&gt;</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">조&nbsp;&nbsp;식 - 호텔식</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">체&nbsp;&nbsp;험 - 제주도를 대표하는 최고의 잠수함 시설, 친절한 관광지 <span style="color: #0000ff;">&lsquo;우도잠수함&rsquo;</span></span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">관광지 - 드라마 올인 촬영지로 유명한 <span style="color: #0000ff;">섭지코지 ~ 광치기 해안</span> 자유시간</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">중 &nbsp;식 - 제주 향토 고등어 조림</span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">관광지 - 서우봉 바당길 따라 들꽃을 따라 걷는 <span style="color: #0000ff;">함덕 서우봉</span> 둘레길 </span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">제주공항 도착 후 개별 수속&nbsp;&nbsp;및 개별 출발 <span style="background-color: #ffff00;">(16시대 출발)</span></span></strong></p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">김포공항 도착</span></strong></p>
+<p>&nbsp;</p>
+<p><strong><span style="font-family: Gulim; font-size: 14pt;">※ 상기 일정은 현지 사정 및 비행 사정에 의해 변경될 수 있습니다 ※</span></strong></p>
+</body>
+</html>
+        </div>
+    </div>
+    <!-- //여행일정 -->
+    <!-- 유의사항 -->
+    
+    <!-- //유의사항 -->
+    <!-- 취소.환불 -->
+    <div id="tab_4" class="tab_cnt">
+        <div>
+            <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p><span style="color: #800000;"><strong><span style="font-family: nanumbarungothic; font-size: 14pt;">&lt;유의사항&gt;</span></strong></span></p>
+<p><span style="color: #800000; font-size: 14pt;"><strong><span style="font-family: nanumbarungothic;"><span style="color: #333333; font-family: nanumbarungothic;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot;&nbsp;예약시점에 따라&nbsp;항공사 변동이 있을 수 있습니다. </span></span></span></strong></span></p>
+<p><span style="color: #800000; font-size: 14pt;"><strong><span style="font-family: nanumbarungothic;"><span style="color: #333333; font-family: nanumbarungothic;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #800000; font-size: 14pt;"><strong><span style="font-family: nanumbarungothic;"><span style="color: #333333; font-family: nanumbarungothic;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot;</span> 출발일에 따라 항공시간 변경 될 수 있습니다.<span style="color: #953734;"><span style="color: #ff0000;"><span style="color: #f10b00; font-family: 굴림;"><br /></span></span></span></span></span></strong><span style="font-family: nanumbarungothic;"><span style="color: #333333; font-family: nanumbarungothic;"><span style="color: #953734;"><span style="color: #ff0000;"><span style="color: #f10b00; font-family: 굴림;"><span style="color: #000000;">&nbsp; - 항공 출발 시간은 1시간 전후로 변경될 수 있습니다.</span></span></span></span></span></span><span style="font-family: nanumbarungothic;"><span style="color: #333333; font-family: nanumbarungothic;"><span style="color: #953734;"><span style="color: #ff0000;"><span style="color: #f10b00; font-family: 굴림;"><br /></span></span></span></span></span><span style="color: #000000;"><span style="font-family: nanumbarungothic;"><span style="font-family: nanumbarungothic;"><span style="font-family: 굴림;">&nbsp; - 항공권 탑승자 명 변경불가. 예약 시 신분증상에 기재된</span></span></span><span style="font-family: nanumbarungothic;"><span style="font-family: nanumbarungothic;"><span style="font-family: 굴림;"> <br />&nbsp;&nbsp;- 성함을 정확히 알려주세요 (외국인은 여권영문이름 必) </span></span></span></span></span></span></span></span></strong></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; <strong>상기</strong> <strong>상품은</strong> <span style="color: #000000; font-family: Nanum;"><strong>최소 <span style="color: #0000ff;">6명이상 출발</span>조건 상품 </strong>입니다.</span></span></p>
+<p><span style="color: #ff0000;"><strong><span style="font-family: nanumbarungothic; font-size: 14pt;"><span style="font-family: Nanum;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #000000; font-family: Nanum;">&nbsp; - 최소인원 미달 시 행사가 취소될 수 있습니다.</span></span></span></span></strong></span></p>
+<p><strong><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; 출발 날짜 기준 <span style="color: #0000ff;">당사 예약 인원 20인 이상 시 '여행다움 단독' 패키지로</span> 진행됩니다.</span></strong></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; 숙박 상품은 2인 1실 기준 입니다.</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&nbsp; (3인 1실 사용을 원하실 경우 별도 요청 주시면 가능 여부를 확인해 드리겠습니다.)</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; 호텔 <strong>객실 1인 1실</strong> 이용시 <span style="color: #0000ff;"><strong>싱글차지&nbsp;(120,000원/인) 추가&nbsp;</strong></span>됩니다.</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; 객실은 현장에서 배정되므로, 객실 타입 지정 및 변경이 불가합니다.</span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; 숙소는 상황에 따라 동급의 타 숙소로 변경될 수 있습니다.</span></span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; 예약 시 상품가 전액 결제가 완료되어야 예약이 완료 됩니다.</span></span></span></span></span></span></span></span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; 교원여행상품권 이용 시 <span style="color: #ff0000;"><strong>상품권은 반드시 상품 출발 4영업일 전에 당사에 도착</strong></span>해야 합니다.</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; 출발 당일 차량 상황과 인원에 따라 출발지가 변동될 수 있습니다.</span></span></span></span></span></span></span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #ff0000;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&middot; 이용자 본인의 과실 및 본인 건강상태로 인하여 발생한 안전사고에 대해서는 이용자 본인의</span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&nbsp;&nbsp; 책임임을<span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&nbsp;알려 드립니다.</span></span></span></span></span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #ff0000;">&middot; 항공좌석 확보를 위해 항공편은 선발권 기준이며, 항공권 발권 이후 취소 건에 대하여 항공 취소 패널티가 부과됩니다.</span></span>&nbsp;</p>
+<p><span style="color: #ff0000; font-family: nanumbarungothic; font-size: 14pt;"><strong>&middot; 국내여행자보험 서비스 제공 중지에 따른 안내</strong></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&nbsp; 2012년 8월 18일부로 '개인정보통신법'이 시행됨에 따라 주민등록번호 수집을 금지하고 있어 당사를 통한 여행자보험 가입이 불가능함을 알려 드립니다.</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">이에 따라 국내여행상품의 여행자보험 가입을 원하시는 고객님은 별도로 개별 가입 하시길 권해 드립니다.</span></span></p>
+<p>&nbsp;</p>
+<p><span style="color: #800000; font-family: nanumbarungothic;"><strong><span style="font-size: 14pt;">&lt;취소/환불 관련 사항&gt;</span></strong></span></p>
+<p><span style="font-family: nanumbarungothic;">&nbsp;</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-size: 14pt;"><strong><span style="color: #333333; font-size: 14pt;">&middot; </span>예약 취소 및 변경은 인터넷 홈페이지를 통해서 하시면 간편 합니다.</strong></span></span></p>
+<p><span style="font-family: nanumbarungothic;"><strong><span style="color: #333333; font-size: 14pt;">&nbsp; <span style="color: #ff0000;">* 전화를 통한 예약 취소 및 변경은 평일 09:00~18:00 사이 담당자와</span></span></strong></span></p>
+<p><span style="font-family: nanumbarungothic;"><strong><span style="color: #333333; font-size: 14pt;"><span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&nbsp; 통화 완료 후 가능합니다.</span></span></strong></span></p>
+<p><span style="color: #ff0000; font-family: nanumbarungothic; font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <strong>토,일,공휴일 휴무 - 전화를 통한 취소/변경 불가</strong></span></p>
+<p><span style="color: #ff0000; font-family: nanumbarungothic; font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <strong>고객센터 전화번호: 1855-3355</strong></span></p>
+<p><span style="color: #ff0000; font-family: nanumbarungothic; font-size: 14pt;"><strong><span style="color: #333333; font-size: 14pt;">&middot; </span><span style="color: #333333; font-size: 14pt;">최소인원 미달 시 행사가 취소될 수 있습니다.</span></strong></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&nbsp; * 최소 모객 인원 미달 등으로 발생한 여행 취소 건은 전액 환불 됩니다.</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&nbsp; * 현지사정 및 기상에 의한 취소 또는 출발 2일 전까지 최소 인원 모객이 되지 않아</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp; 행사가 취소될 경우 당사는 배상의 책임을 지지 않습니다.</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-size: 14pt;"><span style="color: #333333; font-size: 14pt;">&middot; </span>현장 직원(스토리텔러 포함)이나 토,일,공휴일 당직자 및 비상연락처를 통한</span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-size: 14pt;">&nbsp; 취소/변경은 불가 합니다.</span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #333333; font-size: 14pt;"><span style="color: #333333; font-size: 14pt;"><span style="color: #333333; font-size: 14pt;">&middot; </span>취소 위약금은 결제 금액 기준이 아닌 <span style="color: #ff0000;"><strong>정상 판매가</strong></span>를 기준으로 책정 됩니다.</span></span></span></p>
+<p><span style="font-family: nanumbarungothic;">&nbsp;</span></p>
+<p><span style="color: #800000; font-family: nanumbarungothic; font-size: 14pt;"><strong>&lt;취소 및 환불 규정&gt;</strong></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&nbsp;* 본 상품은 공정거래 위원회의 국내여행 표준약관과 다른 <span style="color: #ff0000;"><strong>특별약관</strong></span>이 적용 됩니다.</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;"><span style="color: #ff0000; font-size: 14pt;"><strong>&nbsp;* </strong><strong>여행 출발일 기준은 주말/공휴일을 제외한 영업일 기준&nbsp;입니다.</strong></span></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">&nbsp;</span></p>
+<p><span style="color: #800000; font-family: nanumbarungothic; font-size: 14pt;"><strong>[</strong><strong>국내 숙박여행 환불규정(특별약관)]</strong></span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">여행 10일 전 취소 및 변경 시: 위약금 없음 (100% 환불)</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">여행 9~7일 전 취소 및 변경 시: 전체 여행경비의&nbsp;20%&nbsp;위약금&nbsp;(80% 환불)</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">여행 6~5일 전 취소 및 변경 시: 전체 여행경비의&nbsp;30%&nbsp;위약금&nbsp;(70% 환불)</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">여행 4~3일 전 취소 및 변경 시: 전체 여행경비의&nbsp;50% 위약금 (50% 환불)</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">여행 2~1일 전 취소 및 변경 시: 전체 여행경비의&nbsp;80% 위약금 (20% 환불)</span></p>
+<p><span style="color: #333333; font-family: nanumbarungothic; font-size: 14pt;">여행 당일 노쇼/취소 및 변경 시: 전체 여행경비 환불 불가 (0% 환불)</span></p>
+</body>
+</html>
+        </div>
+    </div>
+    <!-- //취소.환불 -->
+    <!-- 탑승지 -->
+    <div id="tab_5" class="tab_cnt">
+        <div>
+            <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p><span style="font-size: 14pt;">개별 제주공항 도착 후 집결</span></p>
+<p><span style="font-size: 14pt;">(출발전 확정 안내시 제주공항 가이드 연락처 및 미팅 장소를 안내해드리겠습니다.)</span></p>
+</body>
+</html>
+        </div>
+    </div>
+    <!-- //탑승지 -->
+
+    <!-- 여행후기 -->
+    <div id="tab_6" class="tab_cnt">
+        <ul class="review_box">
+                    
+                        <!-- list repeat -->
+                        <li>
+                            <div class="review_list">
+                                <div class="rev_cont">
+                                    <div class="reviewer"><span>424******</span><span class="date">2022-03-06</span></div>
+                                    <div> <pre style="font-family:'Noto Sans KR', sans-serif">제주 여행중 여행다움에서 갔던기억은  잘 알려진곳보단 구석구석 돌아본 여행지라 즐거운추억으로 간직되어  또 가고싶은곳 제주여행입니다</pre></div>
+                                </div>
+                                <div class="rev_img">
+                                        <img src="../Resources/images/img_review.png">
+                                </div>
+                            </div>
+                        </li>
+                        <!-- //list repeat -->
+                    
+                    
+                        <!-- list repeat -->
+                        <li>
+                            <div class="review_list">
+                                <div class="rev_cont">
+                                    <div class="reviewer"><span>sjl******</span><span class="date">2021-10-09</span></div>
+                                    <div> <pre style="font-family:'Noto Sans KR', sans-serif">제주여행을 계획하고 계신분들께 정말 추천 드리고 싶은 상품입니다.
+
+운전에 대한 스트레스,무엇을 보고 먹을것인가에 대한 스트레스를 접어두고 그저 모든걸 맡기고 즐기수 있는 여행다운 여행이었다..라고 함께한 친구들도 이구동성으로 만족스러워 하네요.
+
+제주도를 자주 다녀온 사람도 처음인 사람도 만족할 만한 프로그램과 한끼도 허술하지 않게 신경쓴 흔적이 고마운 마음이 들 정도였습니다.
+
+일부 코스의  타이밍이 안맞아 떨어지는 미스는 조금 더 연구하시면 오래도록 여행을 즐기는 우리 시니어들에게 완벽한 여행이 되리라 믿습니다.
+
+좀 더 다양한 지역의 상품도 기다리며 액티브한 우리 시니어들의 좋은 친구가 되어 주시기를 당부드립니다.
+
+
+
+
+</pre></div>
+                                </div>
+                                <div class="rev_img">
+                                        <img src="../Resources/images/img_review.png">
+                                </div>
+                            </div>
+                        </li>
+                        <!-- //list repeat -->
+                    
+                    
+                        <!-- list repeat -->
+                        <li>
+                            <div class="review_list">
+                                <div class="rev_cont">
+                                    <div class="reviewer"><span>kim******</span><span class="date">2021-10-03</span></div>
+                                    <div> <pre style="font-family:'Noto Sans KR', sans-serif">김포공항에서 티켓팅도 수월했고
+아름다운 제주에서 알찬 일정으로 ,
+구름도 예술이였고 행복했네요
+가이드님이 남는시간에 새별오름, 
+이호태우해변도  갈 수 있었어요
+다 좋았지만 숙소는  보통이였어요</pre></div>
+                                </div>
+                                <div class="rev_img">
+                                        <img src="../Resources/images/img_review.png">
+                                </div>
+                            </div>
+                        </li>
+                        <!-- //list repeat -->
+                    
+        </ul>
+    </div>
+    <!-- //여행후기 -->
+
+</div>
+<!-- //탭 영역 -->
+<script>
+
+    $(function () {
+
+        var realSlider = $("ul#bxslider").bxSlider({
+            speed: 500,
+            pager: false,
+            nextText: '',
+            prevText: '',
+            infiniteLoop: true,
+            hideControlOnEnd: true,
+            onSlideBefore: function ($slideElement, oldIndex, newIndex) {
+                changeRealThumb(realThumbSlider, newIndex);
+            }
+        });
+
+        var realThumbSlider = $("ul#bxslider-pager").bxSlider({
+            minSlides: 4,
+            maxSlides: 4,
+            slideWidth: 120,
+            slideMargin: 10,
+            moveSlides: 1,
+            pager: false,
+            controls: false,
+            speed: 500,
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            nextText: '<span></span>',
+            prevText: '<span></span>',
+            onSlideBefore: function ($slideElement, oldIndex, newIndex) {
+                //$("#sliderThumbReal ul .active").removeClass("active");
+                //$slideElement.addClass("active");
+            }
+        });
+
+        linkRealSliders(realSlider, realThumbSlider);
+
+        if ($("#bxslider-pager li").length < 4) {
+            $("#bxslider-pager .bx-next").hide();
+        }
+
+        function linkRealSliders(bigS, thumbS) {
+
+            $("ul#bxslider-pager").on("click", "a", function (event) {
+                event.preventDefault();
+                var newIndex = $(this).parent().attr("data-slideIndex");
+                bigS.goToSlide(newIndex);
+            });
+        }
+
+        function changeRealThumb(slider, newIndex) {
+
+            var $thumbS = $("#bxslider-pager");
+            $thumbS.find('.active').removeClass("active");
+            $thumbS.find('li[data-slideIndex="' + newIndex + '"]').addClass("active");
+
+            if (slider.getSlideCount() - newIndex >= 4) slider.goToSlide(newIndex);
+            else slider.goToSlide(slider.getSlideCount() - 4);
+
+        }
+
+    });
+
+
+    var viewSchedule = $('.btn_blue');
+    viewSchedule.click(function () {
+        jQuery('html, body').stop().animate({ scrollTop: jQuery(this).parent().offset().top + 400 }, 100);
+    });
+    function tabDepartView() {
+        $('.view_tab li a').removeClass('on');
+        $("#v_Depart").addClass('on');
+        $('.tab_cnt').hide();
+        $("#tab_5").show().focus();
+        $('.tab_cnt').removeClass('on');
+        $("#tab_5").addClass('on');
+    }
+</script>
+                </div>
+            </div>
+        <!-- [e]contents -->
+        <!-- [s]footer -->
+        
+
+<button type="button" id="gotop" title="위로가기"></button>
+
+<!-- footer -->
+<footer id="footer">
+    <div>
+        <div class="footer_top">
+            <span>여행문의</span><strong>1855-3355</strong><p>상담가능시간:평일 09~18시</p>
+            <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyQnaList">1:1문의</a>
+            <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyApplyList">견적 문의</a>
+            <a href="../Customer/FaqList.html">자주하는질문</a>
+            <a href="../Home/Company.html">회사소개</a>
+            <div class="familysite">
+                <!-- 열기전 버튼 -->
+                <a href="javascript:void(0);" class="btn_fs_on active" onclick="$('.btn_fs_on').removeClass('active');$('.btn_fs_off').addClass('active');$('.family_site_list').slideDown(350);">패밀리 사이트</a>
+                <!-- //열기전 버튼 -->
+                <!-- 열기시 btn_fs_off에 active 클래스 추가 닫기시 btn_fs_on에 active -->
+                <ul class="family_site_list">
+                    <li>패밀리 사이트 </li>
+                    <li><a href="http://www.kyowon.co.kr/" title="새창열기" target="_blank">교원그룹</a></li>
+                    <li><a href="http://www.kyowontour.com/" title="새창열기" target="_blank">여행이지</a></li>
+                    <li><a href="http://www.kyowonedu.com/" title="새창열기" target="_blank">교원에듀</a></li>
+                    <li><a href="http://www.kumon.co.kr/" title="새창열기" target="_blank">구몬학습</a></li>
+                    <li><a href="http://www.kyowonwells.com/" title="새창열기" target="_blank">교원웰스</a></li>
+                    <li><a href="http://www.kyowonlife.co.kr/" title="새창열기" target="_blank">교원라이프</a></li>
+                    <li><a href="http://www.theorm.kr/" title="새창열기" target="_blank">더오름</a></li>
+                    <li><a href="http://www.sinnandaschool.com/" title="새창열기" target="_blank">교원신난다체험스쿨</a></li>
+                    <li><a href="http://www.suites.co.kr/" title="새창열기" target="_blank">스위트호텔</a></li>
+                </ul>
+                <!-- 열기후 버튼 -->
+                <a href="javascript:void(0);" class="btn_fs_off " onclick="$('.btn_fs_off').removeClass('active');$('.btn_fs_on').addClass('active');$('.family_site_list').slideUp(350);">패밀리 사이트</a>
+                <!-- //열기후 버튼 -->
+            </div>
+        </div>
+        <a href="javascript:goJoin();" class="bnr"><img src="../Resources/images/footer_bnr.png" alt="여행매거진 신청하세요"></a>
+        <div class="address">
+            상호 : (주)교원투어 │ 대표이사 : 장동하 │ 주소 : 서울 종로구 청계천로 51-1 교원투어빌딩, 13층(03189)<br />
+            TEL : 대표전화 1855-3355 (상담가능시간-평일:09:00~18:00)│ FAX:02)397-9350<br />
+            사업자등록번호 : 104-81-48192 │ 관광사업자 등록번호 : 제1999-000007호  <br />
+            일반여행업 보증금외 15억원 가입 │ 통신판매업신고번호: 제 중구04250호<br />
+        </div>
+        <div class="terms">
+            
+            
+            <a href="#">개인정보관리 책임자 : 김명진</a>
+            <a href="../Etc/Privacy.html">개인정보 처리방침</a>
+            <a href="../Etc/Policy.html">여행약관/서비스 이용약관</a>
+        </div>
+        <div class="copyright">COPYRIGHT(C) KYOWON TOUR, ALL RIGHTS RESERVED</div>
+    </div>
+</footer>
+<!-- //footer -->
+<script>
+    function goJoin() {
+        
+        if (!confirm('회원가입 하시면 무료로 여행매거진을 받아 보실 수 있습니다')) {
+
+        }
+        else {
+            location.href = "https://www.tourdaum.com:4465/Member/JoinIntro";
+        }
+        
+}
+</script>
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+
+                '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
+
+    })(window, document, 'script', 'dataLayer', 'GTM-5NJJDSN');</script>
+<!-- Enliple Tracker Start -->
+<script type="text/javascript">
+    (function (a, g, e, n, t) { a.enp = a.enp || function () { (a.enp.q = a.enp.q || []).push(arguments) }; n = g.createElement(e); n.async = !0; n.defer = !0; n.src = "../../cdn.megadata.co.kr/dist/prod/enp_tracker_self_hosted.min.js"; t = g.getElementsByTagName(e)[0]; t.parentNode.insertBefore(n, t) })(window, document, "script");
+    enp('create', 'common', 'kyowontravel', { device: 'W' });  // W:웹, M: 모바일, B: 반응형
+    enp('send', 'common', 'kyowontravel');
+</script>
+<!-- Enliple Tracker End -->
+<!-- ADN Tracker[공통] start -->
+<script type="text/javascript">
+    var adn_param = adn_param || [];
+    adn_param.push([{
+        ui: '103614',
+        ut: 'Home'
+    }]);
+</script>
+<script type="text/javascript" defer="" src="../../fin.rainbownine.net/js/adn_tags_2.1.3.js"></script>
+<!-- ADN Tracker[공통] end -->
+<!-- ADN 클로징패널 설치  start -->
+<script type="text/javascript">
+    var adn_panel_param = adn_panel_param || [];
+    adn_panel_param.push([{
+        ui: '103614',
+        ci: '1036140001',
+        gi: '47719'
+    }]);
+</script>
+<script type="text/javascript" async src="../../fin.rainbownine.net/js/across_adn_closed_pc_ad_1.0.4.js"></script>
+<!-- ADN 클로징패널 설치 end -->
+<!-- WIDERPLANET  SCRIPT START 2021.6.9 -->
+<div id="wp_tg_cts" style="display:none;"></div>
+<script type="text/javascript">
+    var wptg_tagscript_vars = wptg_tagscript_vars || [];
+    wptg_tagscript_vars.push(
+        (function () {
+            return {
+                wp_hcuid: "",   /*고객넘버 등 Unique ID (ex. 로그인  ID, 고객넘버 등 )를 암호화하여 대입.
+                *주의 : 로그인 하지 않은 사용자는 어떠한 값도 대입하지 않습니다.*/
+                ti: "52102",	/*광고주 코드 */
+                ty: "Home",	/*트래킹태그 타입 */
+                device: "web"	/*디바이스 종류  (web 또는  mobile)*/
+
+            };
+        }));
+</script>
+<script type="text/javascript" async src="../../cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+<!-- // WIDERPLANET  SCRIPT END 2021.6.9 -->
+<script type="text/javascript" src="http://static.tagmanager.toast.com/tag/view/1798"></script>
+<script type="text/javascript">
+    window.ne_tgm_q = window.ne_tgm_q || [];
+    window.ne_tgm_q.push(
+        {
+            tagType: 'visit',
+            device: 'web'/*web, mobile, tablet*/,
+            uniqValue: '',
+            pageEncoding: 'utf-8'
+        });
+</script>
+<script type="text/javascript" src="../../wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">if (!wcs_add) var wcs_add = {}; wcs_add["wa"] = "a80ccf421f0b88"; if (window.wcs) { wcs_do(); }</script>
+        <!-- [e]footer -->
+    </div>
+    <!-- [e]wrap -->
+    <!-- AceCounter Log Gathering Script V.8.0.2019080601 -->
+    <script language='javascript'>
+        var _AceGID = (function () { var Inf = ['gtc1.acecounter.com', '8080', 'AS4A44817684720', 'AW', '0', 'NaPm,Ncisy', 'ALL', '0']; var _CI = (!_AceGID) ? [] : _AceGID.val; var _N = 0; var _T = new Image(0, 0); if (_CI.join('.').indexOf(Inf[3]) < 0) { _T.src = "https://" + Inf[0] + '/?cookie'; _CI.push(Inf); _N = _CI.length; } return { o: _N, val: _CI }; })();
+        var _AceCounter = (function () { var G = _AceGID; var _sc = document.createElement('script'); var _sm = document.getElementsByTagName('script')[0]; if (G.o != 0) { var _A = G.val[G.o - 1]; var _G = (_A[0]).substr(0, _A[0].indexOf('.')); var _C = (_A[7] != '0') ? (_A[2]) : _A[3]; var _U = (_A[5]).replace(/\,/g, '_'); _sc.src = 'https:' + '//cr.acecounter.com/Web/AceCounter_' + _C + '.js?gc=' + _A[2] + '&py=' + _A[4] + '&gd=' + _G + '&gp=' + _A[1] + '&up=' + _U + '&rd=' + (new Date().getTime()); _sm.parentNode.insertBefore(_sc, _sm); return _sc.src; } })();
+    </script>
+    <!-- AceCounter Log Gathering Script End -->
+</body>
+</html>

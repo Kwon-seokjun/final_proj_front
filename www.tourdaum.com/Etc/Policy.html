@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.tourdaum.com/Etc/Policy by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jul 2022 15:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>여행을 여행답게, 여행다움</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:title" content="여행을 여행답게, 여행다움">
+    <meta property="og:description" content="액티브 시니어를 위한 프리미엄 테마 여행, 여행을 여행답게, 여행다움입니다.">
+    <meta property="og:image" content="http://m.tourdaum.com/Error/Oops404/404">
+    <meta property="og:url" content="http://m.tourdaum.com/">
+    <link rel="shortcut icon" href="../Resources/Images/favicon.ico" />
+    <link href="../Resources/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../Resources/css/bxslider.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&amp;subset=korean">
+    <script type="text/javascript" src="../Resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../Resources/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="../Resources/js/common.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
+    <!-- Global site tag (gtag.js) - Google Ads: 681620318 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-681620318"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'AW-681620318');</script>
+
+    <script type="text/javascript" charset="UTF-8" src="../../t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript">
+        kakaoPixel('7065337229126516084').pageView();
+    </script>
+    <script type="text/javascript">
+        //모바일웹 분기
+        if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/Windows CE/i)) || (navigator.userAgent.match(/Symbian/i)) || (navigator.userAgent.match(/BlackBerry/i)) || (navigator.userAgent.match(/Android/i))) {
+            //현재URL
+            var currentPage = document.location.href
+            if (currentPage.match(/www.tourdaum.com/i)) {
+                document.location.replace(currentPage.replace("www.tourdaum.com", "m.tourdaum.com"));
+            }
+
+        }
+
+        $(function () {
+            var topSelect = "공통";
+            $("#top_" + topSelect).addClass("on");
+
+            //210121 본상품 조회용
+            //fnViewPdList();
+
+            
+            });
+        function setCookie(name, value, expiredays) {
+            var todayDate = new Date();
+            todayDate.setDate(todayDate.getDate() + expiredays);
+            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+        }
+
+        function getCookie(name) {
+            var nameOfCookie = name + "=";
+            var x = 0;
+            while (x <= document.cookie.length) {
+                var y = (x + nameOfCookie.length);
+                if (document.cookie.substring(x, y) == nameOfCookie) {
+                    if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+                        endOfCookie = document.cookie.length;
+                    return unescape(document.cookie.substring(y, endOfCookie));
+                }
+
+                x = document.cookie.indexOf(" ", x) + 1;
+                if (x == 0)
+                    break;
+            }
+            return "";
+        }
+
+        function fnPopClose() {
+            setCookie("pop_eventBtn", "done", 1);
+            $('.btnEvent').hide();
+        }
+        function placeBannerCount(link, seq) {
+            //배너 조회수 증가
+            fnBannerCount(seq, "2");
+            //해당페이지로 이동
+            document.location.href = link;
+        }
+
+        fnMainBannerLink = function (link, seq) {
+            //배너 조회수 증가
+            fnBannerCount(seq, "1");
+            //해당페이지로 이동
+            document.location.href = link;
+        }
+
+        fnBannerCount = function (seq, gubun) {
+            $.ajax({
+                type: "POST",
+                url: "/Etc/BannerCount",
+                data: ({ "seq": seq, "gubun": gubun }),
+                dataType: "json",
+                success: function (data) {
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+
+        function goGrade() {
+            document.location.href = "https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyGrade";
+        }
+        function ChkMagazineYn() {
+            var userId = $("#mChkId").val();
+            $.ajax({
+                type: "POST",
+                url: "/Mypage/UserMagazineYn",
+                data: ({ "userId": userId }),
+                dataType: "json",
+                success: function (data) {
+                    if (data > 0) {
+                        MagazineYnUpd(userId);
+                    }
+                    else {
+                        alert("현재 무료 구독 신청이 완료된 상태입니다. 무료 구독이 해제되신 경우에만 재구독 신청이 가능합니다.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+        function MagazineYnUpd(userId) {
+            if (!confirm('매거진 재구독을 신청하시겠습니까?')) {
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Mypage/UserMagazineYnUpd",
+                data: ({ "userId": userId }),
+                dataType: "json",
+                success: function (data) {
+                    if (data > 0) {
+                        alert("정상 신청되셨습니다. 1년간 총 4회 발송되며, 1년간 로그인 이력이 없으면 자동 구독 해제됩니다. 여행다움과 함께 행복하고 즐거운 여행하세요. 감사합니다.");
+                    }
+                    else {
+                        alert("");
+                    }
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+
+        //function fnViewPdList() {
+        //    var pdlist = getCookie("pdViewList");
+        //    if (pdlist != null && pdlist != "") {
+        //        $.ajax({
+        //            type: "POST",
+        //            url: "/Product/ProductViewList",
+        //            data: ({ "pdlist": pdlist }),
+        //            dataType: "json",
+        //            success: function (data) {
+        //                fnViewPdListDisplay(data)
+        //            },
+        //            error: function (xhr, status, error) {
+        //            }
+        //        });
+        //    }
+        //}
+
+        //fnViewPdListDisplay = function (data, page) {
+        //    var _totalCount = data.length;
+        //    var listData = "";
+        //    var target = $("#pdViewList");
+
+        //    //target.empty();
+        //    if (_totalCount == 0) {
+        //        target.append("");
+        //    } else {
+        //        var html = [];
+        //        html.push(
+        //            " <span>",
+        //            "   <a href='/Product/ProductSelect?productId={0}'>",
+        //            "       <img src='{1}{2}'/>",
+        //            "       <div>",
+        //            "          <p class='toe'>{6}</p>",
+        //            "          <span class='category {9}'>{4}</span>",
+        //            "          <span class='price'><strong>{7}</strong>원~</span>",
+        //            "          <span {8} class='mission'>미션</span>",
+        //            "       </div>",
+        //            "   </a>",
+        //            "</span>"
+        //        );
+        //        listhtml = html.join("");
+
+        //        var categoryClass = "";
+        //        for (i = 0; i < _totalCount; i++) {
+
+        //            if (data[i].DivCd == "N") {
+        //                categoryClass = "stay"
+        //            }
+        //            else {
+        //                categoryClass = "day"
+        //            }
+        //            var icon = "";
+        //            if (data[i].SpecialYn != "Y") {
+        //                icon = "style='display:none;'"
+        //            }
+        //            listData = util.format(listhtml, data[i].ProductId, data[i].ThumbFilePath, data[i].ThumbFileNm,
+        //                data[i].DivCd, data[i].DivNm, data[i].ProductDesc, data[i].ProductNm, data[i].SellPrice, icon, categoryClass);
+        //            target.append(listData);
+        //        }
+        //    }
+
+
+        //}
+    </script>
+    
+</head>
+<body>
+    <input type="hidden" id="mChkId" value="1" />
+    <!-- [s]top-->
+    <!--//[e]top-->
+    <div id="wrap">
+        <!-- mask -->
+        <div id="mask"><div class="layerWindow"></div></div>
+        <!-- //mask -->
+
+        <!-- 210121 본상품 조회용 -->
+        
+        <!-- 210121 본상품 조회용 -->
+        <!-- [s]header -->
+        
+
+<script>
+    function fnSearch() {
+        var keyWord = $("#searchKeyWord").val();
+        if (keyWord == "") {
+            alert("검색어를 입력해주세요.");
+        }
+        else {
+            location.href = "/Product/ProductSearchList?keyWord=" + encodeURIComponent(keyWord);
+        }
+
+    }
+</script>
+<div class="header_wrap">
+    <!-- 2102 header를 감싸는 div 추가-->
+    <!-- header -->
+    <div id="header">
+        <div class="logo">
+            <a href="../index.html"><img src="../Resources/images/logo.png" alt="여행다움"></a>
+        </div>
+        <div class="header_sch">
+            <input type="text" name="searchKeyWord" id="searchKeyWord" placeholder="검색어를 입력하세요"  value="" onkeypress="javascript: if (event.keyCode == 13) fnSearch();">
+            <button onclick="fnSearch()" title="검색"></button>
+        </div>
+        <div class="header_right">
+
+                <a href="https://www.tourdaum.com:4465/Member/JoinHub" class="">회원가입</a>
+                <a href="https://www.tourdaum.com:4465/Login/Index" class="">로그인</a>
+        </div>
+    </div>
+    <!-- //header -->
+</div>
+
+<!-- nav -->
+<div id="nav">
+    <ul>
+        <li><a href="../Product/ProductList3a99.html?divCd=D" id="top_Product_D">당일여행</a></li>
+        <li><a href="../Product/ProductList9e6b.html?divCd=N" id="top_Product_N">숙박여행</a></li>
+        
+        <li><a href="../Product/PlanProductList.html" id="top_PlanProduct">기획전</a></li>
+        <li><a href="../Product/ProductLocationList.html" id="top_Location">지역여행</a></li>
+        <li><a href="../Customer/NoticeList.html" id="top_notice">고객센터</a></li>
+    </ul>
+    <div class="bnr">
+        <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyGrade"><img src="../Resources/images/bnr_nav.png" alt="스탬프모으면 공짜여행!"></a>
+    </div>
+</div>
+<!-- //nav -->
+
+        <!-- [e]header -->
+            <!-- sub_location-->
+            <!--// sub_location-->
+
+        <!-- [s]contents -->
+            <div id="container">
+                <div id="contents">
+                    
+
+
+<script type="text/javascript" src="../Resources/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#goBefore").click(function () {
+            location.href = '';
+        })
+    });
+    function tabView2(obj, id) {
+        $("a[name=gtab]").removeClass('on');
+        $(obj).addClass('on');
+        $('.tab_cnt').hide();
+        $(document.getElementById(id)).show().focus();
+        $('.tab_cnt').removeClass('on');
+        $(document.getElementById(id)).addClass('on');
+    }
+
+</script>
+
+<!-- contents -->
+<div id="contents" class="all">
+    <h1>
+        이용약관
+        <button id="goBefore" class="btn_prev">이전</button>
+    </h1>
+    <div class="tab_wrap type2 col-2">
+        <ul class="view_tab">
+            <li><a href="#none" id="tab1" name="gtab" class="on">이용약관</a></li>
+            <li><a href="TPolicy.html" id="tab2" name="gtab">국내여행 표준약관</a></li>
+        </ul>
+        <!-- 이용약관 -->
+        <div id="tab_1" class="tab_cnt on">
+            <div class="fs16">
+                <b>제1장 총칙</b><br>
+                [제1조 목적]<br>
+                이 약관은 정보통신망이용촉진등에관한법률 등 관련 법령에 의하여 ㈜교원투어가 제공하는 인터넷여행정보서비스(이하 "서비스"라 함)의 이용조건 및 절차에 관한 사항을 규정함을 목적으로 합니다. <br><br>
+                [제2조 (약관외 준칙)]<br>
+                이 약관에 명시되지 않은 사항이 관계법령에 규정되어 있을 경우에는 그 규정에 따릅니다. <br><br>
+                [제3조 (용어의 정의)]<br>
+                이 약관에서 사용하는 용어의 정의는 다음과 같습니다. <br>
+                1. 이용자 : 회사와 서비스 이용계약을 체결하고 이용자번호를 부여 받은 개인 또는 법인 ( 협력 여행사 포함 )<br>
+                2. 이용자번호(ID) : 이용자 식별과 이용자의 서비스 이용을 위하여 서비스 계약 체결시 이용자의 선택에 의하여 회사가 부여하는 이용자의 영어 또는 영어와 숫자의 조합 ( "_ , - "포함)<br>
+                3. 비밀번호 : 부여받은 이용자번호와 일치된 이용자임을 확인하고 이용자자신의 비밀보호를 위하여 이용자 자신이 선정한 영어 또는 영어 숫자의 조합. <br><br>
+                <b>제2장 회원 가입과 서비스 이용에 관한 조항</b><br>
+                [제1조 이용계약의 성립]<br>
+                1. 이용계약은 이용자의 이용신청에 대한 회사의 이용승낙과 이용자의 약관내용에 대한 동의로 성립됩니다. <br>
+                2. 회원에 가입하여 서비스를 이용하고자 하는 희망자는 회사에서 요청하는 개인 신상정보를 제공해야 합니다. <br>
+                3. 회사가 이용신청을 승낙하는 때에는 다음 각 호의 사항을 이용자에게 통지 합니다.<br>
+                ① 이용자 ID<br>
+                ② 서비스 이용 개시일<br>
+                ③ 기타 회사가 필요하다고 인정하는 사항<br>
+                4. 회사는 다음 각 호에 해당하는 이용계약신청에 대하여는 이를 승낙하지 아니 합니다. <br>
+                ① 다른 사람의 명의를 사용하여 신청하였을 때 <br>
+                ② 이용계약신청서의 내용을 허위로 기재하였거나 허위서류를 첨부하여 신청 하였을 때<br>
+                ③ 사회의 안녕질서 혹은 미풍양속을 저해할 목적으로 신청하였을 때 <br><br>
+                <b>제3장 서비스 이용 및 개인정보 보호에 관한 조항</b><br>
+                [제1조 서비스 이용]<br>
+                ① 서비스 제공은 회사의 이용 승낙일 부터 개시되며, 회사의 업무상 또는 기술상 특별한 경우를 제외하고는 연중무휴 1일 24시간(00:00-24:00)을 원칙으로 합니다. <br>
+                ② 제1항의 이용시간은 정기점검 등의 필요로 인하여 회사가 정한 날 또는 시간은 그러하지 아니합니다. <br>
+                ③ 회원에 가입한 후라도 일부 서비스 이용시 광고주의 요구에 따라 이용자의 연령에 따른 서비스 이용을 제한할 수 있습니다.<br>
+                ④ 이용자번호 및 비밀번호의관리 및 이용은 이용자의 책임으로 합니다. <br>
+                ⑤ 회사는 이용자ID에 의하여 고객계좌 입금 등 제반 이용자 관리업무를 수행하므로 이용자가 이용자ID를 변경하고자 하는 경우 변경할 명백한 사유가 없는한 그 변경을 제한합니다. <br>
+                ⑥ 이용자에게 통보된 이용자ID 및 비밀번호에 의하여 발생되는 사용상의 과실 또는 제3자에 의한 부정사용등에 대한 모든 책임은 이용자에게 있습니다. 다만, 회사의 고의 또는 중과실이 있는 경우에는 그러하지 아니합니다. <br><br>
+                [제2조 서비스 이용신청]<br>
+                1. 서비스를 이용하고자 하는 자는 다음 사항을 회사가 온라인으로 제공하는 가입신청양식에 정확하고, 사실과 다름이 없이 기록하여야 합니다. <br>
+                ① 한글성명(실명) <br>
+                ② 비밀번호(Password) <br>
+                ③ 주민등록번호 <br>
+                ④ E-mail 주소<br>
+                2. 이용신청자가 회원으로 등록하기 위해서는 이 약관의 내용과 이 약관이 이용계약의 일부가 됨을 동의하여야 합니다. <br>
+                3. 서비스 이용신청 후 기타 개인정보 사항은 서비스 이용신청과는 무관합니다 <br><br>
+                [제3조 서비스이용신청의 승낙]<br>
+                1. 회사는 이용신청자가 제3장 2조에서 정한 모든 사항을 정확히 기재하고 이 약관의 내용에 동의하여 이용신청을 하였을 때에는 서비스의 이용을 승낙하는 것을 원칙으로 합니다. 이용신청의 처리는 신청순서에 의합니다. <br>
+                2. 회사는 다음과 같은 사유가 발생한 경우 이용신청에 대한 승낙을 거부합니다.<br>
+                ① 만 14세 미만의 자가 이용신청을 하는 경우 <br>
+                ② 이름 및 주민등록번호가 일치하지 않는 경우 <br>
+                ③ 이미 가입된 회원의 이름 및 주민등록번호와 동일한 경우<br>
+                ④ 기타 위법한 이용신청임이 확인된 경우 <br><br>
+                [제4조 개인정보의 변경, 보호]<br>
+                1. 이용신청자 또는 회원은 이용신청시 기재한 사항이 변경되었을 경우에는 즉시 운영자를 통하여 관련사항을 수정해야 합니다. 단, 회원아이디(ID), 주민등록번호 및 성명은 수정할 수 없습니다. <br>
+                2. 전항의 경우, 수정하지 않는 정보로 인한 각종 손해는 당해 회원이 부담하며, 회사는 이에 대하여 아무런 책임을 지지 않습니다. <br>
+                3. 회사는 회원의 개인정보 보호를 위하여 관리자를 최소한으로 한정하며 회사의 고의 또는 과실로 인하여 신용카드, 은행계좌 등을 포함한 회원의 개인정보의 분실, 도난, 유출, 변조 등으로 야기된 회원의 손해에 대하여는 모든 책임을 부담합니다. <br>
+                4. 회사 또는 회사로부터 개인정보를 제공받은 제3자는 개인정보의 수집목적이나 제공받은 목적을 달성한 때에는 당해 개인정보를 지체없이 파기합니다.<br> <br>
+                [제5조 서비스 이용계약의 종료 (회원 탈퇴)]<br>
+                1. 이용계약은 회원 또는 회사의 해지에 의하여 즉시 종료됩니다. <br>
+                2. 회원의 해지<br>
+                ① 회원은 언제든지 회사에게 해지의사를 통지함으로써 이용계약을 해지할 수 있습니다. <br>
+                ② 탈퇴를 원하신다면 이 페이지 상단에 위치한 회원정보변경(명칭 : 변경) 코너를 통해서 쉽게 탈퇴하실 수 있습니다 회원의 요청에 의해 해지 또는 삭제된 개인정보는 ㈜교원투어의 회원정보관리 프로그램에 의해 자동으로 완전 파기되며 어떠한 방법으로도 재생할 수 없도록 처리됩니다. <br>
+                ③ 회원이 이용계약을 해지한 경우, 이용계약은 해지의사가 회사에 도달한 때에 종료됩니다.<br>
+                ④ 회원의 의사로 해지를 한 경우에는 재이용 의사가 회사에 통지된 즉시 서비스 재이용이 가능합니다. <br>
+                3. 회사의 해지 회사는 다음과 같은 사유가 발생하거나 확인된 경우 이용계약을 해지할 수 있습니다. 이 경우 회사는 회원에게 E-mail, 전화, 기타의 방법을 통하여 해지사유를 밝혀 해지의사를 통지합니다. 다만, 회사는 회원에게 해지통지를 발송하기 전에 해지사유에 대한 의견진술의 기회를 부여합니다. 이용계약은 회사의 해지의사를 회원에게 통지한 시점에 종료됩니다. 회사의 판단으로 이용계약이 해지 된 경우에는, 회원이 재이용 신청을 하더라도 재이용 여부는 약관 제3장 3조에 의하여 결정됩니다 <br>
+                ① 회사 동의 없이 여행관련 물품을 판매 / 등록하거나 기타 공공질서 및 미풍양속에 위배되는 물품 거래 행위를 하거나 시도한 경우<br>
+                ② 회사나 다른 회원 기타 타인의 권리나 명예, 신용 기타 정당한 이익을 침해하는 행위를 한 경우<br>
+                ③ 회사가 제공하는 여행서비스의 원활한 진행을 방해하는 행위를 하거나 시도한 경우 <br>
+                4. 회사는 이용계약의 종료로 인한 손해 또는 손실에 대하여 일체의 책임을 지지 않습니다. <br><br>
+                <b>제4장 의무에 관한 조항</b><br>
+                [제1조 회사의 의무]<br>
+                1. 회사는 귀하가 동의하지 않은 영리목적의 광고성 전자우편 발송을 하지 않습니다. <br>
+                2. 회사는 특별한 사정이 없는 한 이용자가 신청한 서비스 제공 개시일에 서비스를 이용할 수 있도록 합니다. <br>
+                3. 회사는 이 약관에서 정한 바에 따라 계속적, 안정적으로 서비스를 제공할 의무가 있습니다. <br>
+                4. 회사는 이용자의 개인신상정보를 본인의 승낙 없이 타인에게 누설, 배포하여서는 아니 됩니다. 다만, 관계법령의 규정에 의하여 국가기관의 요구가 있는 경우나, 수사상의 목적으로 영장의 제시가 있는 경우에는 그러하지 않습니다. <br>
+                5. 회사는 이용자로부터 제기되는 의견이나 불만이 정당하다고 인정할 경우에는 즉시 처리하여야 합니다. 다만, 즉시 처리가 곤란한 경우에는 이용자에게 그 사유와 처리 일정을 통보하여야 합니다. <br>
+                6. 회사는 정보통신망 이용촉진에 관한 법률, 통신비밀보호법, 전기통신 기본법 등 서비스의 운영, 유지와 관련 있는 법규를 준수합니다. <br>
+                7. 회사가 제공하는 서비스로 인하여 귀하에게 손해가 발생한 경우, 그러한 손해가 당사의 고의나 중과실에 기해 발생한 경우에 한하여 회사 에서 책임을 부담하며, 그 책임의 범위는 통상손해에 한합니다. <br><br>
+                [제2조 이용자의 의무 이용자는 이 약관 및 관계법령에서 규정한 사항을 준수하여야 합니다]<br>
+                1. 이용자는 서비스를 이용할 때 다음의 각 호의 행위를 하지 않아야 합니다. <br>
+                ① 다른 이용자의 이용자번호를 부정하게 사용하는 행위<br>
+                ② 서비스를 이용하여 얻은 정보를 회사의 사전승낙 없이 이용자의 이용이외의 목적으로 복제하거나 이를 출판, 방송등에 사용하거나 제3자에게 제공하는 행위 <br>
+                ③ 다른 이용자 또는 제3자를 비방하거나 중상모략으로 명예를 손상시키는 행위 <br>
+                ④ 공공질서 및 미풍양속에 위반되는 내용의 정보, 문장, 도형등을 타인에게 유포하는 행위 <br>
+                ⑤ 범죄적 행위와 결부된다고 판단되는 행위 <br>
+                ⑥ 다른 이용자 또는 제3자의 저작권등 기타 권리를 침해하는 행위 <br>
+                ⑦ 기타 관계 법령에 위배되는 행위 <br>
+                2. 이용자는 이 약관에서 규정하는 사항과 서비스 이용안내 또는 주의사항을 준수하여야 합니다. <br>
+                3. 이용자는 회사에서 허용한 경우를 제외하고는 서비스를 이용하여 영업행위를 할 수 없습니다. <br>
+                4. 이용자는 이용계약 사항에 변동이 있을 경우에는 변동사항을 회사에 고지하여야 하며, 누락으로 인한 불이익에 대해서는 이용자의 책임으로 합니다. <br>
+                5. 이용자는 회원 사항에 대한 변동이 있을 경우 본인이 직접 회사에 통보해야 하며 변동 사항에 대한 책임은 이용자에게 있습니다. <br><br>
+                <b>제5장 기타 조항</b> <br>
+                제1조 (양도등의 금지) <br>
+                이용자가 서비스를 받을 권리는 양도하거나 증여할 수 없으며 질권의 목적으로 사용할 수 없습니다. <br><br>
+                제2조 (저작권) 서비스에 게재된 자료에 대한 권리는 다음과 같습니다. <br>
+                1. 서비스내에 게시하거나 등록한 자료의 지적재산권은 회사에 있습니다. <br>
+                2. 이용자는 서비스를 이용하여 얻은 정보를 가공,판매하는 행위 등 서비스에 게재된 자료를 상업적 목적으로 이용할 수 없습니다. <br><br>
+                제3조 (면책조항) <br>
+                1. 회사는 천재지변 기타 불가항력적인 사유로 인해 서비스를 제공할 수 없는 경우에는 서비스 제공중지에 대한 책임을 면합니다. <br>
+                2. 회사는 이용자의 귀책사유로 인한 서비스 이용의 장애에 대하여 책임을 지지 않습니다. <br><br>
+                제4조 (관할법원)<br>
+                서비스 이용요금등 서비스 이용상 발생한 분쟁에 대해서는 서울지방법원 전속관할로 한다 <br><br>
+                제5조 (규정의 준용)<br>
+                이 약관에 명시되지 않은 사항에 대해서는 정보통신사업법 등 관계법령과 인터넷서비스업체들의 이용약관에 의한다.
+                회사는 회원이 제기하는 정당한 의견이나 불만을 반영하고 그 문제를 해결하고 불만사항 및 의견을 우선적으로 처리하며, 처리가 지연될 경우 그 사유와 처리기간을 통보합니다. <br>
+                고객 불편 사항을 메일 (추후 기입 예정)이나 전화 : 추후 기입 예정 팩스 : 추후 기입 예정 로 알려주시면 성심껏 처리해드리겠습니다. <br><br>
+                부칙 본 약관은 2021년 5월 3일부터 적용됩니다.<br><br>
+                <b>[회사소개]</b> <br>
+                1) 회사명 : ㈜교원투어<br>
+                2) 소재지 : (우) 04515 서울시 중구 서소문로 135 연호빌딩, 6층 <br>
+                3) 대표이사 : 장동하 <br>
+                4) 사업자 등록번호 : 104-81-48192<br>
+                5) 관광사업자 등록번호 : 제1999-000007호<br>
+                <br><br>
+                <a href="Policy47a5.html?gubun=0503" style="font-weight:bold">이전 이용약관 보기 (2021. 05. 03 이전)</a><br />
+            </div>
+        </div>
+        <!-- //이용약관 -->
+    </div>
+</div>
+<!-- //contents -->
+                </div>
+            </div>
+        <!-- [e]contents -->
+        <!-- [s]footer -->
+        
+
+<button type="button" id="gotop" title="위로가기"></button>
+
+<!-- footer -->
+<footer id="footer">
+    <div>
+        <div class="footer_top">
+            <span>여행문의</span><strong>1855-3355</strong><p>상담가능시간:평일 09~18시</p>
+            <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyQnaList">1:1문의</a>
+            <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyApplyList">견적 문의</a>
+            <a href="../Customer/FaqList.html">자주하는질문</a>
+            <a href="../Home/Company.html">회사소개</a>
+            <div class="familysite">
+                <!-- 열기전 버튼 -->
+                <a href="javascript:void(0);" class="btn_fs_on active" onclick="$('.btn_fs_on').removeClass('active');$('.btn_fs_off').addClass('active');$('.family_site_list').slideDown(350);">패밀리 사이트</a>
+                <!-- //열기전 버튼 -->
+                <!-- 열기시 btn_fs_off에 active 클래스 추가 닫기시 btn_fs_on에 active -->
+                <ul class="family_site_list">
+                    <li>패밀리 사이트 </li>
+                    <li><a href="http://www.kyowon.co.kr/" title="새창열기" target="_blank">교원그룹</a></li>
+                    <li><a href="http://www.kyowontour.com/" title="새창열기" target="_blank">여행이지</a></li>
+                    <li><a href="http://www.kyowonedu.com/" title="새창열기" target="_blank">교원에듀</a></li>
+                    <li><a href="http://www.kumon.co.kr/" title="새창열기" target="_blank">구몬학습</a></li>
+                    <li><a href="http://www.kyowonwells.com/" title="새창열기" target="_blank">교원웰스</a></li>
+                    <li><a href="http://www.kyowonlife.co.kr/" title="새창열기" target="_blank">교원라이프</a></li>
+                    <li><a href="http://www.theorm.kr/" title="새창열기" target="_blank">더오름</a></li>
+                    <li><a href="http://www.sinnandaschool.com/" title="새창열기" target="_blank">교원신난다체험스쿨</a></li>
+                    <li><a href="http://www.suites.co.kr/" title="새창열기" target="_blank">스위트호텔</a></li>
+                </ul>
+                <!-- 열기후 버튼 -->
+                <a href="javascript:void(0);" class="btn_fs_off " onclick="$('.btn_fs_off').removeClass('active');$('.btn_fs_on').addClass('active');$('.family_site_list').slideUp(350);">패밀리 사이트</a>
+                <!-- //열기후 버튼 -->
+            </div>
+        </div>
+        <a href="javascript:goJoin();" class="bnr"><img src="../Resources/images/footer_bnr.png" alt="여행매거진 신청하세요"></a>
+        <div class="address">
+            상호 : (주)교원투어 │ 대표이사 : 장동하 │ 주소 : 서울 종로구 청계천로 51-1 교원투어빌딩, 13층(03189)<br />
+            TEL : 대표전화 1855-3355 (상담가능시간-평일:09:00~18:00)│ FAX:02)397-9350<br />
+            사업자등록번호 : 104-81-48192 │ 관광사업자 등록번호 : 제1999-000007호  <br />
+            일반여행업 보증금외 15억원 가입 │ 통신판매업신고번호: 제 중구04250호<br />
+        </div>
+        <div class="terms">
+            
+            
+            <a href="#">개인정보관리 책임자 : 김명진</a>
+            <a href="Privacy.html">개인정보 처리방침</a>
+            <a href="Policy.html">여행약관/서비스 이용약관</a>
+        </div>
+        <div class="copyright">COPYRIGHT(C) KYOWON TOUR, ALL RIGHTS RESERVED</div>
+    </div>
+</footer>
+<!-- //footer -->
+<script>
+    function goJoin() {
+        
+        if (!confirm('회원가입 하시면 무료로 여행매거진을 받아 보실 수 있습니다')) {
+
+        }
+        else {
+            location.href = "https://www.tourdaum.com:4465/Member/JoinIntro";
+        }
+        
+}
+</script>
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+
+                '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
+
+    })(window, document, 'script', 'dataLayer', 'GTM-5NJJDSN');</script>
+<!-- Enliple Tracker Start -->
+<script type="text/javascript">
+    (function (a, g, e, n, t) { a.enp = a.enp || function () { (a.enp.q = a.enp.q || []).push(arguments) }; n = g.createElement(e); n.async = !0; n.defer = !0; n.src = "../../cdn.megadata.co.kr/dist/prod/enp_tracker_self_hosted.min.js"; t = g.getElementsByTagName(e)[0]; t.parentNode.insertBefore(n, t) })(window, document, "script");
+    enp('create', 'common', 'kyowontravel', { device: 'W' });  // W:웹, M: 모바일, B: 반응형
+    enp('send', 'common', 'kyowontravel');
+</script>
+<!-- Enliple Tracker End -->
+<!-- ADN Tracker[공통] start -->
+<script type="text/javascript">
+    var adn_param = adn_param || [];
+    adn_param.push([{
+        ui: '103614',
+        ut: 'Home'
+    }]);
+</script>
+<script type="text/javascript" defer="" src="../../fin.rainbownine.net/js/adn_tags_2.1.3.js"></script>
+<!-- ADN Tracker[공통] end -->
+<!-- ADN 클로징패널 설치  start -->
+<script type="text/javascript">
+    var adn_panel_param = adn_panel_param || [];
+    adn_panel_param.push([{
+        ui: '103614',
+        ci: '1036140001',
+        gi: '47719'
+    }]);
+</script>
+<script type="text/javascript" async src="../../fin.rainbownine.net/js/across_adn_closed_pc_ad_1.0.4.js"></script>
+<!-- ADN 클로징패널 설치 end -->
+<!-- WIDERPLANET  SCRIPT START 2021.6.9 -->
+<div id="wp_tg_cts" style="display:none;"></div>
+<script type="text/javascript">
+    var wptg_tagscript_vars = wptg_tagscript_vars || [];
+    wptg_tagscript_vars.push(
+        (function () {
+            return {
+                wp_hcuid: "",   /*고객넘버 등 Unique ID (ex. 로그인  ID, 고객넘버 등 )를 암호화하여 대입.
+                *주의 : 로그인 하지 않은 사용자는 어떠한 값도 대입하지 않습니다.*/
+                ti: "52102",	/*광고주 코드 */
+                ty: "Home",	/*트래킹태그 타입 */
+                device: "web"	/*디바이스 종류  (web 또는  mobile)*/
+
+            };
+        }));
+</script>
+<script type="text/javascript" async src="../../cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+<!-- // WIDERPLANET  SCRIPT END 2021.6.9 -->
+<script type="text/javascript" src="http://static.tagmanager.toast.com/tag/view/1798"></script>
+<script type="text/javascript">
+    window.ne_tgm_q = window.ne_tgm_q || [];
+    window.ne_tgm_q.push(
+        {
+            tagType: 'visit',
+            device: 'web'/*web, mobile, tablet*/,
+            uniqValue: '',
+            pageEncoding: 'utf-8'
+        });
+</script>
+<script type="text/javascript" src="../../wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">if (!wcs_add) var wcs_add = {}; wcs_add["wa"] = "a80ccf421f0b88"; if (window.wcs) { wcs_do(); }</script>
+        <!-- [e]footer -->
+    </div>
+    <!-- [e]wrap -->
+    <!-- AceCounter Log Gathering Script V.8.0.2019080601 -->
+    <script language='javascript'>
+        var _AceGID = (function () { var Inf = ['gtc1.acecounter.com', '8080', 'AS4A44817684720', 'AW', '0', 'NaPm,Ncisy', 'ALL', '0']; var _CI = (!_AceGID) ? [] : _AceGID.val; var _N = 0; var _T = new Image(0, 0); if (_CI.join('.').indexOf(Inf[3]) < 0) { _T.src = "https://" + Inf[0] + '/?cookie'; _CI.push(Inf); _N = _CI.length; } return { o: _N, val: _CI }; })();
+        var _AceCounter = (function () { var G = _AceGID; var _sc = document.createElement('script'); var _sm = document.getElementsByTagName('script')[0]; if (G.o != 0) { var _A = G.val[G.o - 1]; var _G = (_A[0]).substr(0, _A[0].indexOf('.')); var _C = (_A[7] != '0') ? (_A[2]) : _A[3]; var _U = (_A[5]).replace(/\,/g, '_'); _sc.src = 'https:' + '//cr.acecounter.com/Web/AceCounter_' + _C + '.js?gc=' + _A[2] + '&py=' + _A[4] + '&gd=' + _G + '&gp=' + _A[1] + '&up=' + _U + '&rd=' + (new Date().getTime()); _sm.parentNode.insertBefore(_sc, _sm); return _sc.src; } })();
+    </script>
+    <!-- AceCounter Log Gathering Script End -->
+</body>
+
+<!-- Mirrored from www.tourdaum.com/Etc/Policy by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jul 2022 15:50:40 GMT -->
+</html>

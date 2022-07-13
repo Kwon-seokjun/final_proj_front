@@ -1,0 +1,1229 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.tourdaum.com/Customer/NoticeView?nttid=516&searchColumn=&searchword=&searchpreface=&searchpreface2=&searchpreface3=&page=1 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jul 2022 16:08:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>여행을 여행답게, 여행다움</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:title" content="여행을 여행답게, 여행다움">
+    <meta property="og:description" content="액티브 시니어를 위한 프리미엄 테마 여행, 여행을 여행답게, 여행다움입니다.">
+    <meta property="og:image" content="http://m.tourdaum.com/Error/Oops404/404">
+    <meta property="og:url" content="http://m.tourdaum.com/">
+    <link rel="shortcut icon" href="../Resources/Images/favicon.ico" />
+    <link href="../Resources/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../Resources/css/bxslider.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&amp;subset=korean">
+    <script type="text/javascript" src="../Resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../Resources/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="../Resources/js/common.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
+    <!-- Global site tag (gtag.js) - Google Ads: 681620318 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-681620318"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'AW-681620318');</script>
+
+    <script type="text/javascript" charset="UTF-8" src="../../t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript">
+        kakaoPixel('7065337229126516084').pageView();
+    </script>
+    <script type="text/javascript">
+        //모바일웹 분기
+        if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/Windows CE/i)) || (navigator.userAgent.match(/Symbian/i)) || (navigator.userAgent.match(/BlackBerry/i)) || (navigator.userAgent.match(/Android/i))) {
+            //현재URL
+            var currentPage = document.location.href
+            if (currentPage.match(/www.tourdaum.com/i)) {
+                document.location.replace(currentPage.replace("www.tourdaum.com", "m.tourdaum.com"));
+            }
+
+        }
+
+        $(function () {
+            var topSelect = "고객센터";
+            $("#top_" + topSelect).addClass("on");
+
+            //210121 본상품 조회용
+            //fnViewPdList();
+
+            
+            });
+        function setCookie(name, value, expiredays) {
+            var todayDate = new Date();
+            todayDate.setDate(todayDate.getDate() + expiredays);
+            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+        }
+
+        function getCookie(name) {
+            var nameOfCookie = name + "=";
+            var x = 0;
+            while (x <= document.cookie.length) {
+                var y = (x + nameOfCookie.length);
+                if (document.cookie.substring(x, y) == nameOfCookie) {
+                    if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+                        endOfCookie = document.cookie.length;
+                    return unescape(document.cookie.substring(y, endOfCookie));
+                }
+
+                x = document.cookie.indexOf(" ", x) + 1;
+                if (x == 0)
+                    break;
+            }
+            return "";
+        }
+
+        function fnPopClose() {
+            setCookie("pop_eventBtn", "done", 1);
+            $('.btnEvent').hide();
+        }
+        function placeBannerCount(link, seq) {
+            //배너 조회수 증가
+            fnBannerCount(seq, "2");
+            //해당페이지로 이동
+            document.location.href = link;
+        }
+
+        fnMainBannerLink = function (link, seq) {
+            //배너 조회수 증가
+            fnBannerCount(seq, "1");
+            //해당페이지로 이동
+            document.location.href = link;
+        }
+
+        fnBannerCount = function (seq, gubun) {
+            $.ajax({
+                type: "POST",
+                url: "/Etc/BannerCount",
+                data: ({ "seq": seq, "gubun": gubun }),
+                dataType: "json",
+                success: function (data) {
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+
+        function goGrade() {
+            document.location.href = "https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyGrade";
+        }
+        function ChkMagazineYn() {
+            var userId = $("#mChkId").val();
+            $.ajax({
+                type: "POST",
+                url: "/Mypage/UserMagazineYn",
+                data: ({ "userId": userId }),
+                dataType: "json",
+                success: function (data) {
+                    if (data > 0) {
+                        MagazineYnUpd(userId);
+                    }
+                    else {
+                        alert("현재 무료 구독 신청이 완료된 상태입니다. 무료 구독이 해제되신 경우에만 재구독 신청이 가능합니다.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+        function MagazineYnUpd(userId) {
+            if (!confirm('매거진 재구독을 신청하시겠습니까?')) {
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Mypage/UserMagazineYnUpd",
+                data: ({ "userId": userId }),
+                dataType: "json",
+                success: function (data) {
+                    if (data > 0) {
+                        alert("정상 신청되셨습니다. 1년간 총 4회 발송되며, 1년간 로그인 이력이 없으면 자동 구독 해제됩니다. 여행다움과 함께 행복하고 즐거운 여행하세요. 감사합니다.");
+                    }
+                    else {
+                        alert("");
+                    }
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+
+        //function fnViewPdList() {
+        //    var pdlist = getCookie("pdViewList");
+        //    if (pdlist != null && pdlist != "") {
+        //        $.ajax({
+        //            type: "POST",
+        //            url: "/Product/ProductViewList",
+        //            data: ({ "pdlist": pdlist }),
+        //            dataType: "json",
+        //            success: function (data) {
+        //                fnViewPdListDisplay(data)
+        //            },
+        //            error: function (xhr, status, error) {
+        //            }
+        //        });
+        //    }
+        //}
+
+        //fnViewPdListDisplay = function (data, page) {
+        //    var _totalCount = data.length;
+        //    var listData = "";
+        //    var target = $("#pdViewList");
+
+        //    //target.empty();
+        //    if (_totalCount == 0) {
+        //        target.append("");
+        //    } else {
+        //        var html = [];
+        //        html.push(
+        //            " <span>",
+        //            "   <a href='/Product/ProductSelect?productId={0}'>",
+        //            "       <img src='{1}{2}'/>",
+        //            "       <div>",
+        //            "          <p class='toe'>{6}</p>",
+        //            "          <span class='category {9}'>{4}</span>",
+        //            "          <span class='price'><strong>{7}</strong>원~</span>",
+        //            "          <span {8} class='mission'>미션</span>",
+        //            "       </div>",
+        //            "   </a>",
+        //            "</span>"
+        //        );
+        //        listhtml = html.join("");
+
+        //        var categoryClass = "";
+        //        for (i = 0; i < _totalCount; i++) {
+
+        //            if (data[i].DivCd == "N") {
+        //                categoryClass = "stay"
+        //            }
+        //            else {
+        //                categoryClass = "day"
+        //            }
+        //            var icon = "";
+        //            if (data[i].SpecialYn != "Y") {
+        //                icon = "style='display:none;'"
+        //            }
+        //            listData = util.format(listhtml, data[i].ProductId, data[i].ThumbFilePath, data[i].ThumbFileNm,
+        //                data[i].DivCd, data[i].DivNm, data[i].ProductDesc, data[i].ProductNm, data[i].SellPrice, icon, categoryClass);
+        //            target.append(listData);
+        //        }
+        //    }
+
+
+        //}
+    </script>
+    
+</head>
+<body>
+    <input type="hidden" id="mChkId" value="1" />
+    <!-- [s]top-->
+    <!--//[e]top-->
+    <div id="wrap">
+        <!-- mask -->
+        <div id="mask"><div class="layerWindow"></div></div>
+        <!-- //mask -->
+
+        <!-- 210121 본상품 조회용 -->
+        
+        <!-- 210121 본상품 조회용 -->
+        <!-- [s]header -->
+        
+
+<script>
+    function fnSearch() {
+        var keyWord = $("#searchKeyWord").val();
+        if (keyWord == "") {
+            alert("검색어를 입력해주세요.");
+        }
+        else {
+            location.href = "/Product/ProductSearchList?keyWord=" + encodeURIComponent(keyWord);
+        }
+
+    }
+</script>
+<div class="header_wrap">
+    <!-- 2102 header를 감싸는 div 추가-->
+    <!-- header -->
+    <div id="header">
+        <div class="logo">
+            <a href="../index.html"><img src="../Resources/images/logo.png" alt="여행다움"></a>
+        </div>
+        <div class="header_sch">
+            <input type="text" name="searchKeyWord" id="searchKeyWord" placeholder="검색어를 입력하세요"  value="" onkeypress="javascript: if (event.keyCode == 13) fnSearch();">
+            <button onclick="fnSearch()" title="검색"></button>
+        </div>
+        <div class="header_right">
+
+                <a href="https://www.tourdaum.com:4465/Member/JoinHub" class="">회원가입</a>
+                <a href="https://www.tourdaum.com:4465/Login/Index" class="">로그인</a>
+        </div>
+    </div>
+    <!-- //header -->
+</div>
+
+<!-- nav -->
+<div id="nav">
+    <ul>
+        <li><a href="../Product/ProductList3a99.html?divCd=D" id="top_Product_D">당일여행</a></li>
+        <li><a href="../Product/ProductList9e6b.html?divCd=N" id="top_Product_N">숙박여행</a></li>
+        
+        <li><a href="../Product/PlanProductList.html" id="top_PlanProduct">기획전</a></li>
+        <li><a href="../Product/ProductLocationList.html" id="top_Location">지역여행</a></li>
+        <li><a href="NoticeList.html" id="top_notice">고객센터</a></li>
+    </ul>
+    <div class="bnr">
+        <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyGrade"><img src="../Resources/images/bnr_nav.png" alt="스탬프모으면 공짜여행!"></a>
+    </div>
+</div>
+<!-- //nav -->
+
+        <!-- [e]header -->
+            <!-- sub_location-->
+            <!--// sub_location-->
+
+        <!-- [s]contents -->
+            <div id="container">
+                <div id="contents">
+                        <!-- lnb -->
+                        <div class="lnb">
+                            <strong>고객센터</strong>
+                            <ul>
+                                <li>
+                                    <a id="lnb_notice" href="NoticeList.html">공지사항/이벤트</a>
+                                </li>
+                                <li>
+                                    <a id="lnb_faq" href="FaqList.html">FAQ</a>
+                                </li>
+                                <li>
+                                    <a id="lnb_reviw" href="ReViewList.html">여행후기</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- //lnb -->
+                    
+
+<script type="text/javascript" src="../Resources/js/jquery.rwdImageMaps.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('img[usemap]').rwdImageMaps();
+        var lnbSelect = "notice";
+        $("#lnb_" + lnbSelect).addClass("on");
+        $('#eventBtn').click(function () {
+            fnEventCounponApply();
+        });
+        
+    });
+
+    function resizeHeight(id) {
+        var the_height = document.getElementById(id).contentWindow.document.body.scrollHeight;
+        alert(the_height);
+        document.getElementById(id).height = the_height;
+
+    }
+</script>
+
+<script type="text/javascript">
+
+    function fnCommentInt() {
+        var c_text = $("#inComment").val();
+        var n_id = $("#nttId").val();
+        if (c_text.replace(/\s/g, "") == "") {
+            alert("내용을 입력해주세요.");
+            return false;
+        }
+        //alert(c_text);
+        $.ajax({
+            type: "POST",
+            url: "/Post/BbsCommentInsert",
+            dataType: "json",
+            data: ({ "nttId": n_id, "txtContents": c_text }),
+            success: function (data) {
+                if (data > 0) {
+                    location.reload();
+                }
+                else if (data == -9) {
+                    alert("로그인후 댓글작성이 가능합니다.");
+                }
+                else if (data == -5) {
+                    alert("이미 댓글을 작성했습니다.");
+                }
+                else {
+                    alert("정상 등록되지 않았습니다.");
+                }
+                return false;
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+                //alert(error);
+            }
+
+        });
+    }
+    function fnCommentUpd(flag, c_id) {
+        var n_id = $("#nttId").val();
+        var c_text = $("#updComment_" + c_id).val();
+        if (flag == "D") {
+            if (!confirm("정말 삭제하시겠습니까?")) {
+                return false;
+            }
+        }
+        else if (c_text.replace(/\s/g, "") == "") {
+            alert("내용을 입력해주세요.");
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Post/BbsCommentUpdate",
+            dataType: "json",
+            data: ({
+                "nttId": n_id, "commentId": c_id, "contents": c_text, "flag": flag
+            }),
+            success: function (data) {
+                if (data > 0) {
+                    location.reload();
+                } else {
+                    alert("정상 처리되지 않았습니다.");
+                }
+                return false;
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+                //alert(error);
+            }
+
+        });
+    }
+
+    function fnEventCounponApply() {
+        var n_id = $("#nttId").val();
+        var submitCheck = $("#submitCheck").val();
+
+        if (submitCheck == "Y") {
+            alert("쿠폰발급 처리중입니다.");
+            return;
+        }
+        else {
+            $("#submitCheck").val("Y");
+            $.ajax({
+                type: "POST",
+                url: "/Customer/EventCounponApply",
+                async: true,
+                dataType: "json",
+                data: ({
+                    "nttId": n_id
+                }),
+                success: function (data) {
+                    $("#submitCheck").val("N");
+                    if (data > 0) {
+                        alert("정상적으로 발급 되었습니다.");
+                    } else if (data == -5) {
+                        alert("이미 발급된 쿠폰입니다.");
+                    } else if (data == -9) {
+                        alert("로그인 후 발급 가능합니다.");
+                    } else {
+                        alert("정상 처리되지 않았습니다.");
+                    }
+                    return false;
+                },
+                error: function (xhr, status, error) {
+                    //alert(xhr.responseText);
+                    $("#submitCheck").val("N");
+                    alert("정상 처리되지 않았습니다.");
+                }
+
+            });
+        }
+    }
+
+    function fileDown(fileId, seq) {
+        location.href = "/FileUpload/FileDownload?fileId=" + fileId + "&fileSeq=" + seq;
+    }
+    function fnList(){
+    location.href = "NoticeList2679.html?page=1";
+    }
+</script>
+<input type="hidden" id="submitCheck" value="N" />
+<input type="hidden" name="bbsId" id="bbsId" value="0001" />
+<input type="hidden" name="nttId" id="nttId" value="516" />
+<input type="hidden" name="page" value="1" />
+<input type="hidden" name="searchColumn" value="" />
+<input type="hidden" name="searchWord" value="" />
+<input type="hidden" name="searchPreface" value="" />
+<input type="hidden" name="searchPreface2" value="" />
+<input type="hidden" name="searchPreface3" value="" />
+
+<div class="page">
+    <h2>공지사항/이벤트</h2>
+    <div class="board_view">
+        <div class="tit">
+            [이벤트] [종료]여행다움 봄맞이 이벤트 ♣댓글달고 선물 받아 가세요♣
+            <span>2022.02.23</span>
+        </div>
+        <p class="view_p">
+            <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p><img id="220214_봄맞이이벤트_1" class="editorImg" src="../upload/bbs/0001/220214_%eb%b4%84%eb%a7%9e%ec%9d%b4%ec%9d%b4%eb%b2%a4%ed%8a%b8_1.jpg" alt="" name="220214_봄맞이이벤트_1" /></p>
+</body>
+
+<!-- Mirrored from www.tourdaum.com/Customer/NoticeView?nttid=516&searchColumn=&searchword=&searchpreface=&searchpreface2=&searchpreface3=&page=1 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jul 2022 16:08:51 GMT -->
+</html>
+        </p>
+        <div class="file">
+        </div>
+
+            <!-- comment -->
+            <div class="comment">
+                <div>
+                        <textarea  rows="3" placeholder="로그인후 댓글 작성이 가능합니다."></textarea>
+                </div>
+                <ul>
+
+                        <li>
+                            <strong>hk4** </strong>2022-03-31 20:36
+                     
+                                <p> 서천 동백숲여행으로 예쁜 꽃들 보며 힐링하며 즐거운 시간 보내고 싶어요!</p>
+                        </li>
+                        <li>
+                            <strong>kmk**** </strong>2022-03-31 15:29
+                     
+                                <p> 작년가을 여행다움을 통해 문경여행 갔었는데, 여행일정과 교통, 식사 모두 대만족이였어요.  역쉬!  시니어를 위한 여행다움!   꽃피는 봄에 봄향기 느끼며, 봄꽃 여행 떠나고 싶어요.   올해는 사계절 일정잡아서 아름다운 전국방방(울릉도, 진천, 단양, 서천, 남해안 등등) 여러곳을 여행다움통해 여행 많이 떠나보렵니다. 그중에 진천봄꽃여행, 서천 동백숲여행!  많이 기대되네요.</p>
+                        </li>
+                        <li>
+                            <strong>jju******** </strong>2022-03-30 17:41
+                     
+                                <p> 진천 봄꽃여행 엄마와 아들이 가는 봄꽃 데이트 가고 싶네여 ^^</p>
+                        </li>
+                        <li>
+                            <strong>sel*** </strong>2022-03-30 12:30
+                     
+                                <p> 단양초록여행 가고싶어요. 너무 멀지도 않고 단양이 관공도시라고 알고있는데 고수동굴, 구인사, 도담삼봉등 볼거리가 많고 구경시장에 
+마늘순대가 맛있다고해요. 직접가서 먹고 즐겨보고싶어요. </p>
+                        </li>
+                        <li>
+                            <strong>te1***** </strong>2022-03-30 11:07
+                     
+                                <p> 안성맞춤 산들여행으로 떠나고 싶네요....</p>
+                        </li>
+                        <li>
+                            <strong>e11***** </strong>2022-03-28 12:24
+                     
+                                <p> 산들여행 - 봄바람맞으며 봄내음가득한 여행이 기대되요  </p>
+                        </li>
+                        <li>
+                            <strong>lee****** </strong>2022-03-27 21:05
+                     
+                                <p> 철원 꽃길여행 기대가 되네요^^</p>
+                        </li>
+                        <li>
+                            <strong>ok0***** </strong>2022-03-25 17:20
+                     
+                                <p> 서천 동백숲여행가고 싶어요~
+엄마,아빠 고향이 서천인데  코로나로 힘들어 하신 부모님 모시고 서천 동백숲 여행가고싶어요~~~
+코로나로 인해 엄마,아빠 칠순도 못해드려서  서운해 하시는데  서천동백숲 여행으로 기분전환 해드리고 싶어요~~~ ^^</p>
+                        </li>
+                        <li>
+                            <strong>dom*** </strong>2022-03-25 14:35
+                     
+                                <p> 단양 초록여행 가고싶어요~ 힐링하고 싶습니다~!!</p>
+                        </li>
+                        <li>
+                            <strong>su9****** </strong>2022-03-25 14:28
+                     
+                                <p> 단양 초록여행 가고파요~~ 벌써 싱그러움이 느껴지네요~~~</p>
+                        </li>
+                        <li>
+                            <strong>pap****** </strong>2022-03-25 12:41
+                     
+                                <p> 가족들과 경주 벚꽃길 걸으며 힐링하고싶네요~~~</p>
+                        </li>
+                        <li>
+                            <strong>sjg***** </strong>2022-03-24 19:47
+                     
+                                <p> 서천 동백꽃숲 가고 싶어요 10여년전에 갔던빨갛게 물들었던 동백꽃길을  다시 걷고 싶네요</p>
+                        </li>
+                        <li>
+                            <strong>myg****** </strong>2022-03-24 17:37
+                     
+                                <p> 꽃 진짜 좋아하는데 철원 꽃길여행가고 싶네용 +ㅁ+ 꽃향기와 풍경이 너무 아름다울거같아용</p>
+                        </li>
+                        <li>
+                            <strong>rdt**** </strong>2022-03-24 17:35
+                     
+                                <p> 벌써 여기저기에서  꽃소식이  들려오네요.
+동백꽃 보려  사천으로  go~^^ 얼른  달려 가고싶어용@@@</p>
+                        </li>
+                        <li>
+                            <strong>cat**** </strong>2022-03-24 17:10
+                     
+                                <p> 진천 봄꽃여행가고싶어요~ 역시 봄에는 꽃여행이죠 ^^</p>
+                        </li>
+                        <li>
+                            <strong>ljw**** </strong>2022-03-24 17:00
+                     
+                                <p> 단양 초록여행 가고 싶어요. 너무 도심에 있어서 초록색이 보고싶네요.</p>
+                        </li>
+                        <li>
+                            <strong>hou****** </strong>2022-03-24 16:43
+                     
+                                <p> 안성맞춤 산들여행요~~ 확진이 되어 방콕중이지만 보기만해도 힐링되고 봄나들이 가는것 같네요.</p>
+                        </li>
+                        <li>
+                            <strong>juj**** </strong>2022-03-24 16:10
+                     
+                                <p> 단양 초록여행으로 좋은 공기와 푸릇푸릇한 자연을 만끽하고 싶어요~!</p>
+                        </li>
+                        <li>
+                            <strong>chl***** </strong>2022-03-24 14:30
+                     
+                                <p> 서천 동백숲 여행 가고싶네요~~빨간 동백꽃이 너무 탐스럽고 이뻐보이는~~~</p>
+                        </li>
+                        <li>
+                            <strong>gil** </strong>2022-03-24 13:16
+                     
+                                <p> 철원 꽃길여행 너무 궁금해요! 꼭 가보고 싶어요~!~!!!</p>
+                        </li>
+                        <li>
+                            <strong>lgj*** </strong>2022-03-24 12:53
+                     
+                                <p> 안성맞춤 산들여행 가보고 싶네요~푸르른 들판을 보며 쌓였던 스트레스를 풀고 싶어요~</p>
+                        </li>
+                        <li>
+                            <strong>jis***** </strong>2022-03-24 12:33
+                     
+                                <p> 대구싹쓰리투어 궁금하네요~~
+태어나서 대구 한번도 안가봤는데 싹쓰리투어 한번이면 가봐야할곳은 한번 다 가본 기분일것 같아요~~</p>
+                        </li>
+                        <li>
+                            <strong>zzz***** </strong>2022-03-24 12:00
+                     
+                                <p> 서천 동백숲 가보고 싶어요! 날이 차가운데  활짝핀 동백 꽃을 보면  지금 현실도 잊고 행복할거 같아요!!</p>
+                        </li>
+                        <li>
+                            <strong>als******* </strong>2022-03-24 11:56
+                     
+                                <p> 대구, 대구살지만 대구를 잘 몰라서 여행해보고 싶어욥!!! </p>
+                        </li>
+                        <li>
+                            <strong>her**** </strong>2022-03-24 11:53
+                     
+                                <p> 진천 봄꽃여행 가고싶네요...결혼6년차인데 첫여행지가 진천 농다리였거든요~봄꽃여행+농다리~~아이들과 같이 다녀오고 싶네요~</p>
+                        </li>
+                        <li>
+                            <strong>dms****** </strong>2022-03-24 11:52
+                     
+                                <p> 서천 동백숲여행 꼭 가보고싶어요..!! 빨간색 꽃들 보고나면 기분 좋아지겠죠??</p>
+                        </li>
+                        <li>
+                            <strong>bmh**** </strong>2022-03-24 11:45
+                     
+                                <p> 철원꽃길여행 가고 싶어요  
+아름다운 꽃길을 걷고 나면  사업도 꽃길
+인생도 꽃길  건강도  꽃길만 있을거 같아요
+사진만으로도 힐링이되는데  다녀오면 더좋을듯요</p>
+                        </li>
+                        <li>
+                            <strong>pbw**** </strong>2022-03-24 11:26
+                     
+                                <p> 철원 꽃길 여행 너무 가고 싶내요. 안가본 지역인데 꽃구경도 하고 사진만 봐도 넘 좋내요.</p>
+                        </li>
+                        <li>
+                            <strong>dus**** </strong>2022-03-24 11:25
+                     
+                                <p> 철원 꽃길여행 봄을 제대로 즐길 수 있을것 같아요♥ 
+꽃구경을 몇년동안 못했는데 이번에는 꽃구경을 꼭 한번 해보고 싶어요 ㅎㅎ
+</p>
+                        </li>
+                        <li>
+                            <strong>lee**** </strong>2022-03-24 11:21
+                     
+                                <p> 서천 동백숲 여행 가고 싶어요~  동백숲에서 사진도 찍고 바로 옆 바다에서 신선한 해산물도 먹고~</p>
+                        </li>
+                        <li>
+                            <strong>008**** </strong>2022-03-24 11:14
+                     
+                                <p> 진천 봄꽃 여행 너무 가고싶어요 :d 신랑이랑 아들이랑 셋이 가족여행 가고싶네요!!!</p>
+                        </li>
+                        <li>
+                            <strong>cho***** </strong>2022-03-24 11:07
+                     
+                                <p> 서천, 제 고향입니다~ 주변에 바닷가도 있고, 경치 좋아요^.^</p>
+                        </li>
+                        <li>
+                            <strong>ard**** </strong>2022-03-24 10:58
+                     
+                                <p> 봄바람이 부니 마음도 살랑살랑 하네요~서천 동백숲은 안가봐서 꼭 가보고 싶네요ㅎ</p>
+                        </li>
+                        <li>
+                            <strong>ell****** </strong>2022-03-24 10:48
+                     
+                                <p> 서천 동백숲 여행 가보고 싶어요~~ 봄이 다가오니 꽃구경이 하고 싶네요!</p>
+                        </li>
+                        <li>
+                            <strong>yan****** </strong>2022-03-24 10:42
+                     
+                                <p> 서천 동백숲 여행 가고 싶어요~~~
+가족들과 행복한 시간, 즐거운 추억여행 갈까 합니다.</p>
+                        </li>
+                        <li>
+                            <strong>sj5*** </strong>2022-03-24 10:33
+                     
+                                <p> 다 너무너무 가고 싶은데요 그 중에서 대구 싹쓰리 투어 가고 싶어요  한 번도 못 가본 곳이고 맛집도 많고
+싹쓰리라 하니까 대구의 구석구석 다 볼수 있을것 같아요</p>
+                        </li>
+                        <li>
+                            <strong>lov***** </strong>2022-03-24 10:25
+                     
+                                <p> 서천 동백숲여행 결혼기념일 여행으로 가보고 싶네요 
+동백꽃의 꽃말은 누구보다 당신을 사랑합니다 라고 하는데
+쉬는날 없는 남편과 여행가고 싶네요 </p>
+                        </li>
+                        <li>
+                            <strong>ice***** </strong>2022-03-24 10:22
+                     
+                                <p> 안성맞춤 산들여행이요! 황금빛 들판과 푸른 하늘.. 조용한 흙길을 걷고 있으면 마음까지 시원해질 것 같아요!</p>
+                        </li>
+                        <li>
+                            <strong>jjb******* </strong>2022-03-22 21:39
+                     
+                                <p> 단양 초록여행 꼭 가보고 싶어요~ 티비에서 많이 봤는데 예쁜곳이 많은것 같아서 가보고 싶어요^^</p>
+                        </li>
+                        <li>
+                            <strong>gsj** </strong>2022-03-20 12:18
+                     
+                                <p> 진천으로  
+친구들과 함께   봄나들이 꽃구경 
+너무 좋을거  같아요 ~</p>
+                        </li>
+                        <li>
+                            <strong>sin**** </strong>2022-03-20 12:13
+                     
+                                <p> 서천으로   동백꽃 보러
+설레는  봄여행  가고 싶어요~^^</p>
+                        </li>
+                        <li>
+                            <strong>sli***** </strong>2022-03-20 08:35
+                     
+                                <p> 한번시도해보고싶은
+여행다움상품입니다
+코로나전에는 단체여행으로만 
+진행하느라 진짜여행을 놓친것같아서
+다시 시작해 보려 합니다
+내가알아야
+함께 할수있는 여행이고싶어신청합니다
+진천여행?</p>
+                        </li>
+                        <li>
+                            <strong>hyk******** </strong>2022-03-19 12:06
+                     
+                                <p> 철원 ㆍ단양 ㆍ진천  좋은 곳 봄 꽃놀이 가고싶은곳  많네요 
+좋은 장소 접수해서 여행갈게요
+고맙습니다 </p>
+                        </li>
+                        <li>
+                            <strong>jhj**** </strong>2022-03-18 01:54
+                     
+                                <p> 가고싶은곳이너무많네요</p>
+                        </li>
+                        <li>
+                            <strong>ykh**** </strong>2022-03-17 19:53
+                     
+                                <p> 지난번 지인들만 소개해주구 나만 못가서
+이번에 문경새재 꼭 감니다
+예약 좋은 상품 감사합니다</p>
+                        </li>
+                        <li>
+                            <strong>mon***** </strong>2022-03-17 16:50
+                     
+                                <p> 철원꽃길여행
+올봄에 꼭 걸어보아요~♡</p>
+                        </li>
+                        <li>
+                            <strong>aks**** </strong>2022-03-16 16:30
+                     
+                                <p> 문경새제/여태 한번도 가본적이 없더라구요~~~ 이번에 예약했는데 좋은추억만들께요^^</p>
+                        </li>
+                        <li>
+                            <strong>joy*** </strong>2022-03-16 14:44
+                     
+                                <p> 대구 싹쓰리 투어..ㅎㅎㅎ 상품이름이 너무 확 땡김니다. 저도 가서 대구를 싹~~쓸고오고싶네요...</p>
+                        </li>
+                        <li>
+                            <strong>kyu******* </strong>2022-03-14 20:54
+                     
+                                <p> 진천 봄꽃여행.
+딸들과 가고파요~^가깝고,코스도 꼭!가고픈데 항상 모객이 안되서 못간 여행 입니다.
+이번엔 기필코 가고픈맘입니다.</p>
+                        </li>
+                        <li>
+                            <strong>ins***** </strong>2022-03-14 15:47
+                     
+                                <p> 서천동백숲 여행
+이년전 가족들과 갈대숲으로 간적이 있는데
+이번엔 친구들과 동백꽃 보러 가야겠네요~~^^</p>
+                        </li>
+                        <li>
+                            <strong>424****** </strong>2022-03-14 13:35
+                     
+                                <p> 철원꽃길도 거닐고싶은 한곳입니다 올봄에는 자유롭게 여행하려나 기대했지만 마스크를 벗지못하니 모두가 선뜻나서지못하는 모양입니다 시니어 여러분들 건강관리  잘 하시고 다음여행과 함께 떠나봅시다</p>
+                        </li>
+                        <li>
+                            <strong>ys1*** </strong>2022-03-14 11:32
+                     
+                                <p> 6.서천동백숲여행~
+작년에 남편과 함께 자유여행으로 이곳을 다녀 왔는데  남편이 이번엔 운전 안하고 패키지 상품으로 친한 친구 부부와 함께 다시 가고 싶다고 하네요 ^^
+다리 풀리기 전에 부지런히 다니자면서요 ㅎㅎ</p>
+                        </li>
+                        <li>
+                            <strong>lai******* </strong>2022-03-14 08:55
+                     
+                                <p> 1. 철원 꽃길여행  =  수술후 병원에서 생활하시다, 퇴원후에는 코로나 상황때문에 집에만 머무셨던 어머니 모시고 .. 가까운 곳으로 여행하면 좋을것 같아요 .. 앞으로 꽃길만 걸어서  함께 동행하자는 의미로 좋을 듯 ~~ ^^ 모두 모두 건강하세요 
+</p>
+                        </li>
+                        <li>
+                            <strong>ccy**** </strong>2022-03-14 08:53
+                     
+                                <p> 지자체 지원 여행이 경비도 저렴하고 일정,특히 숙박시설이 좋은것 같습니다
+항상 감사합니다.</p>
+                        </li>
+                        <li>
+                            <strong>San******* </strong>2022-03-13 10:22
+                     
+                                <p> 철원꽃길 여행 ,안성맟춤 산들여행 사진이 그림같네요 .특히 철원 꽃길을  친구와 함께 옛추억을 얘기하며 걷고싶습니다.</p>
+                        </li>
+                        <li>
+                            <strong>pip***** </strong>2022-03-12 21:55
+                     
+                                <p> 여수를 가보고싶어요  오래전에 직장동료가 고향이 여수라 봄에 여행하기 좋은곳이라고 했어 기회가 되면 꼭 가보고 싶네요</p>
+                        </li>
+                        <li>
+                            <strong>yoo****** </strong>2022-03-12 11:20
+                     
+                                <p> 여러번 가본곳을 제외한 모든 여행지에 가고 싶지만 불발되어 속상하네요
+하지만 단양여행은 꼭 하고 싶어요
+몇년전 밤에 지나오면서 살짝살짝 보긴 했지만  수박 겉핥기 한거라 
+아쉬움이 남아 언제든 꼭 가봐야지 ~ 하면서 기다렸는데 이번 좋은 기회에
+꼭 가서 보고 즐기고 멋진 하루를 보내고 싶어요 ~~</p>
+                        </li>
+                        <li>
+                            <strong>fer******** </strong>2022-03-11 21:19
+                     
+                                <p> 안성맞춤 산들여행 ~노란빛 아름답게 물든 언덕 봄향기가 가득~보기만해도 행복이 듬뿍 전달되는것같아요~^^</p>
+                        </li>
+                        <li>
+                            <strong>fer******** </strong>2022-03-11 21:17
+                     
+                                <p> 제천웰니스 너무좋았습니다.벚꽃핀 청풍호 또가고싶은데 여행목록에 없네요 궁금해요</p>
+                        </li>
+                        <li>
+                            <strong>424****** </strong>2022-03-11 17:29
+                     
+                                <p> 단양초록여행가고 싶습니다 초록봄기운 받고 건강챙기렵니다</p>
+                        </li>
+                        <li>
+                            <strong>sme**** </strong>2022-03-11 13:31
+                     
+                                <p> 경북 영양 가보고 싶어요
+가족과 같이 보내는 지인과 별보러요~~</p>
+                        </li>
+                        <li>
+                            <strong>zzi****** </strong>2022-03-11 13:31
+                     
+                                <p> 철원 꽃길여행 하고싶어요
+나이들면서 
+감성이 부쩍 말라버린 언니들이랑 
+봄꽃 만끽하며 
+봄에 흠뻑 빠져서 
+감성 좀 촉촉히 적시고 싶어요</p>
+                        </li>
+                        <li>
+                            <strong>eas**** </strong>2022-03-11 12:30
+                     
+                                <p> 진천은 아직 가보지 못했네요. 이번 봄에 가고 싶어요. 코스가 좋네요</p>
+                        </li>
+                        <li>
+                            <strong>lee******** </strong>2022-03-10 13:58
+                     
+                                <p> 서천 동백꽃숲여행 가고싶어요
+감성메마른 남편과  동백꽃에 취하고싶네요</p>
+                        </li>
+                        <li>
+                            <strong>jsh****** </strong>2022-03-09 10:55
+                     
+                                <p> 따뜻한 봄 햇살 속에서 안성맞춤 산들여행을 가족과 함께 즐기고 싶어요.</p>
+                        </li>
+                        <li>
+                            <strong>han***** </strong>2022-03-06 14:52
+                     
+                                <p> 철원꽃길여행, 은퇴후 아내와 추억만들고 싶어 다녀오고 싶어요</p>
+                        </li>
+                        <li>
+                            <strong>rdt**** </strong>2022-03-05 11:52
+                     
+                                <p> 퇴직전에  가족여행  다녀오고  싶어요.
+꽃비  흠뻑   맞으려  go~go~  ,떠나요</p>
+                        </li>
+                        <li>
+                            <strong>lim****** </strong>2022-03-05 04:21
+                     
+                                <p> 올해 칠순을  맞이하는 남편과함께
+제주도여행을하고 싶네요
+신혼여행때  못가본것이 한이되어
+더늦기전에 가보고 싶네요</p>
+                        </li>
+                        <li>
+                            <strong>lym**** </strong>2022-03-04 23:14
+                     
+                                <p> 결혼 37주년 되는 5월에 거제로 조금늦은 봄나들이 가려합니다 남편과 소중하고 멋진추억 많이 만들고 싶어요
+거제는 한번도 못가봐서 기대가 아주 많이 됩니다</p>
+                        </li>
+                        <li>
+                            <strong>mkm*** </strong>2022-03-04 22:17
+                     
+                                <p> 철원꽃길 여행하고싶어요
+꽃내음 맡으면 친구와 멋있는  여행으로
+</p>
+                        </li>
+                        <li>
+                            <strong>mkm*** </strong>2022-03-04 22:14
+                     
+                                <p> 단양</p>
+                        </li>
+                        <li>
+                            <strong>jok**** </strong>2022-03-04 18:18
+                     
+                                <p> *****여수 오동도 동백꽂도 보고싶어요 여행친구에 진행하는  4월에 서천 동백숲여행가구싶구요 예약 해야되겠어요 소국주도 한잔으로 캬아~ ?? </p>
+                        </li>
+                        <li>
+                            <strong>a43****** </strong>2022-03-04 18:13
+                     
+                                <p> 4월에대구싹쓰리여행 가고싶습니다 볼거리가풍성한곳대~구기다려집니다~</p>
+                        </li>
+                        <li>
+                            <strong>ynz***** </strong>2022-03-04 18:00
+                     
+                                <p> 볼거리 먹거리많은대구가고싶었는데 싹트리투어라 봄에꼭 가고싶어요~꼭~</p>
+                        </li>
+                        <li>
+                            <strong>57c***** </strong>2022-03-04 17:50
+                     
+                                <p> 남해 통영 가는거 있으면 4월거 예약하고 싶어요
+2박 3일이나 3박4일 코스 있으면 안내해 주세요</p>
+                        </li>
+                        <li>
+                            <strong>try*** </strong>2022-03-04 17:20
+                     
+                                <p> 철원 꽃길 여행 , 편안하게 터벅터벅  걷고 싶습니다. 안 가본곳이라 관심이 더가네요. 어떻게 길이 이어져 있는지도 궁금합니다..</p>
+                        </li>
+                        <li>
+                            <strong>phk*** </strong>2022-03-04 16:21
+                     
+                                <p> 만산은 진달래로 불타고 
+하얀 벚꽃 흐드러져 봄기운 물씬 묻어나는 문경새재를  가고싶습니다.</p>
+                        </li>
+                        <li>
+                            <strong>ksa**** </strong>2022-03-04 16:12
+                     
+                                <p> 단양초록여행~~꼭가고싶은 고장입니다 새봄의 단양이 기다려지네요~</p>
+                        </li>
+                        <li>
+                            <strong>tig**** </strong>2022-03-04 16:03
+                     
+                                <p> 남해안 구경도 하고 광양 매화꽃 구경가고 싶네요. 화개장터가서 맛난것도 먹고요</p>
+                        </li>
+                        <li>
+                            <strong>nan******* </strong>2022-03-04 15:56
+                     
+                                <p> 동백숲에 푹 파묻히고 싶어요
+겨울을 잘 이겨냈으니
+봄의전령사로 부족함이 없을테니</p>
+                        </li>
+                        <li>
+                            <strong>og7*** </strong>2022-03-04 15:54
+                     
+                                <p> 거제도 내도동백꽃가득한곳에
+떨어진 동백꽃아래서
+봄기운을 만끽하고 싶네요~
+</p>
+                        </li>
+                        <li>
+                            <strong>imj******* </strong>2022-03-04 15:12
+                     
+                                <p> 대구는 볼 곳과 먹을 것이 많아 늘 가고 싶었는데 싹쓰리 투어라니 다양하게 즐길 수 있는 여행이 될 것 같네요.</p>
+                        </li>
+                        <li>
+                            <strong>pha******* </strong>2022-03-04 15:09
+                     
+                                <p> 개심사에 벚꽃이 만개한 풍경을 즐기고 싶습니다.  흰분홍 꽃잎이 몽글몽글 피어 우리의 가슴에 사랑이를 담아주더라구요.
+</p>
+                        </li>
+                        <li>
+                            <strong>gsj** </strong>2022-03-04 15:03
+                     
+                                <p> 봄하면 산수유지요~!
+구례 산수유  마을로   화사한 노랑 꽃구경 가고 싶어요. 거기에 덤으로  화엄사까지,
+절로  마음이 설레네요~^^</p>
+                        </li>
+                        <li>
+                            <strong>lkj**** </strong>2022-03-04 14:30
+                     
+                                <p> 단양 초록마을 식구들과 여행하고 싶습니다
+푸릇푸릇~~~~~
+얼마나 사랑스러울지 눈에 선합니다~</p>
+                        </li>
+                        <li>
+                            <strong>gh5*** </strong>2022-03-04 14:20
+                     
+                                <p> 바람이 산들산들부니
+안성맞춤 산들여행 가고싶어요 ~~
+멋찐 이밴트 감사합니다 ?????</p>
+                        </li>
+                        <li>
+                            <strong>agg**** </strong>2022-03-04 14:14
+                     
+                                <p> 철원 꽃길여행가고파요~~~코로나때문에 꽃구경 못가본지 2년됐어요~~~~</p>
+                        </li>
+                        <li>
+                            <strong>sem****** </strong>2022-03-04 14:12
+                     
+                                <p> 제주가파도 가고 싶어요. 넘실거리는 청보리길과 해안가 걸으며 힐링하고 싶어요</p>
+                        </li>
+                        <li>
+                            <strong>xia******* </strong>2022-03-04 14:12
+                     
+                                <p> 단양 초록여행은 가고 싶어요 .단양 경치가 일품이라고 들었는데 한번도 가보지를 못해서 가고 싶어요</p>
+                        </li>
+                        <li>
+                            <strong>mkh**** </strong>2022-03-04 14:11
+                     
+                                <p> 한국의 그랜드 캐넌이라 불리는 주상절리길과 드넓은 고석정 꽃밭을  걸어 보고싶네요.</p>
+                        </li>
+                        <li>
+                            <strong>nim**** </strong>2022-03-04 14:08
+                     
+                                <p> 서천 동백숲 여행이요 가까운 곳에서 동백꽃도 보고 장항스카이워크도 걸어보고 싶어요</p>
+                        </li>
+                        <li>
+                            <strong>sud****** </strong>2022-03-04 14:04
+                     
+                                <p> 뭐니뭐니 해도 경주 꽃구경 입니다.  꽃구경은 젊은 청춘 시절에 가보고,  오래되서 다시한번 가보고 싶네요</p>
+                        </li>
+                        <li>
+                            <strong>dud***** </strong>2022-03-04 13:55
+                     
+                                <p> 꽃나들이 가고파요~구례지역으로 이맘때쯤 떠났었는데,이십여년전의 그 마음이 느껴져서 보기만해도  마음을 설레이게 하네요~~^^</p>
+                        </li>
+                        <li>
+                            <strong>har**** </strong>2022-03-04 13:55
+                     
+                                <p> 서천에도  동백을 볼수있다는게 신기하네요
+가고싶어요^^</p>
+                        </li>
+                        <li>
+                            <strong>nan**** </strong>2022-03-04 13:55
+                     
+                                <p> 대구 싹쓰리 투어 궁금해요. 대구의 봄은 어떨지 정말 기대됩니다. </p>
+                        </li>
+                        <li>
+                            <strong>sha****** </strong>2022-03-04 13:54
+                     
+                                <p> 안성맞춤 산들여행-여행을진짜 좋아해서 다 가보았지만 위에사진으로본 산들여행은 정말 보고만있어도 힐링되네요~~봄에맞는 노랑노랑 꼭 가고싶어요</p>
+                        </li>
+                        <li>
+                            <strong>ejt****** </strong>2022-03-04 13:52
+                     
+                                <p> 서천 동백숲여행^^ 동백꽃 보러 여수나 부산믈 갔었는데  굳이 머나먼 남쪽까지 가지 않아도 되듯 ~</p>
+                        </li>
+                        <li>
+                            <strong>lje**** </strong>2022-03-02 12:31
+                     
+                                <p> 대구, 대구는 비지니스로만 가봤지 여행으로는 안가봤어요 기대가됩니다.</p>
+                        </li>
+                        <li>
+                            <strong>oes**** </strong>2022-03-02 12:30
+                     
+                                <p> 가까운 철원으로 꽃길 걸어보고싶습니다.</p>
+                        </li>
+                        <li>
+                            <strong>sin******** </strong>2022-03-02 11:23
+                     
+                                <p> 안성, 봄에 딱 맞는 코스 같아요~팜랜드,금강호수 둘레길 기대됩니다. </p>
+                        </li>
+                </ul>
+            </div>
+            <!-- //comment -->
+
+        <div class="btn">
+            <button onclick="fnList();" class="btn_dark">목록</button>
+        </div>
+    </div>
+
+
+    
+    
+
+    <!-- 게시판 이전글/다음글 -->
+    
+    <!-- //게시판 이전글/다음글 -->
+</div>
+
+
+
+
+
+
+                </div>
+            </div>
+        <!-- [e]contents -->
+        <!-- [s]footer -->
+        
+
+<button type="button" id="gotop" title="위로가기"></button>
+
+<!-- footer -->
+<footer id="footer">
+    <div>
+        <div class="footer_top">
+            <span>여행문의</span><strong>1855-3355</strong><p>상담가능시간:평일 09~18시</p>
+            <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyQnaList">1:1문의</a>
+            <a href="https://www.tourdaum.com:4465/Login?returnUrl=%2fMypage%2fMyApplyList">견적 문의</a>
+            <a href="FaqList.html">자주하는질문</a>
+            <a href="../Home/Company.html">회사소개</a>
+            <div class="familysite">
+                <!-- 열기전 버튼 -->
+                <a href="javascript:void(0);" class="btn_fs_on active" onclick="$('.btn_fs_on').removeClass('active');$('.btn_fs_off').addClass('active');$('.family_site_list').slideDown(350);">패밀리 사이트</a>
+                <!-- //열기전 버튼 -->
+                <!-- 열기시 btn_fs_off에 active 클래스 추가 닫기시 btn_fs_on에 active -->
+                <ul class="family_site_list">
+                    <li>패밀리 사이트 </li>
+                    <li><a href="http://www.kyowon.co.kr/" title="새창열기" target="_blank">교원그룹</a></li>
+                    <li><a href="http://www.kyowontour.com/" title="새창열기" target="_blank">여행이지</a></li>
+                    <li><a href="http://www.kyowonedu.com/" title="새창열기" target="_blank">교원에듀</a></li>
+                    <li><a href="http://www.kumon.co.kr/" title="새창열기" target="_blank">구몬학습</a></li>
+                    <li><a href="http://www.kyowonwells.com/" title="새창열기" target="_blank">교원웰스</a></li>
+                    <li><a href="http://www.kyowonlife.co.kr/" title="새창열기" target="_blank">교원라이프</a></li>
+                    <li><a href="http://www.theorm.kr/" title="새창열기" target="_blank">더오름</a></li>
+                    <li><a href="http://www.sinnandaschool.com/" title="새창열기" target="_blank">교원신난다체험스쿨</a></li>
+                    <li><a href="http://www.suites.co.kr/" title="새창열기" target="_blank">스위트호텔</a></li>
+                </ul>
+                <!-- 열기후 버튼 -->
+                <a href="javascript:void(0);" class="btn_fs_off " onclick="$('.btn_fs_off').removeClass('active');$('.btn_fs_on').addClass('active');$('.family_site_list').slideUp(350);">패밀리 사이트</a>
+                <!-- //열기후 버튼 -->
+            </div>
+        </div>
+        <a href="javascript:goJoin();" class="bnr"><img src="../Resources/images/footer_bnr.png" alt="여행매거진 신청하세요"></a>
+        <div class="address">
+            상호 : (주)교원투어 │ 대표이사 : 장동하 │ 주소 : 서울 종로구 청계천로 51-1 교원투어빌딩, 13층(03189)<br />
+            TEL : 대표전화 1855-3355 (상담가능시간-평일:09:00~18:00)│ FAX:02)397-9350<br />
+            사업자등록번호 : 104-81-48192 │ 관광사업자 등록번호 : 제1999-000007호  <br />
+            일반여행업 보증금외 15억원 가입 │ 통신판매업신고번호: 제 중구04250호<br />
+        </div>
+        <div class="terms">
+            
+            
+            <a href="#">개인정보관리 책임자 : 김명진</a>
+            <a href="../Etc/Privacy.html">개인정보 처리방침</a>
+            <a href="../Etc/Policy.html">여행약관/서비스 이용약관</a>
+        </div>
+        <div class="copyright">COPYRIGHT(C) KYOWON TOUR, ALL RIGHTS RESERVED</div>
+    </div>
+</footer>
+<!-- //footer -->
+<script>
+    function goJoin() {
+        
+        if (!confirm('회원가입 하시면 무료로 여행매거진을 받아 보실 수 있습니다')) {
+
+        }
+        else {
+            location.href = "https://www.tourdaum.com:4465/Member/JoinIntro";
+        }
+        
+}
+</script>
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+
+                '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
+
+    })(window, document, 'script', 'dataLayer', 'GTM-5NJJDSN');</script>
+<!-- Enliple Tracker Start -->
+<script type="text/javascript">
+    (function (a, g, e, n, t) { a.enp = a.enp || function () { (a.enp.q = a.enp.q || []).push(arguments) }; n = g.createElement(e); n.async = !0; n.defer = !0; n.src = "../../cdn.megadata.co.kr/dist/prod/enp_tracker_self_hosted.min.js"; t = g.getElementsByTagName(e)[0]; t.parentNode.insertBefore(n, t) })(window, document, "script");
+    enp('create', 'common', 'kyowontravel', { device: 'W' });  // W:웹, M: 모바일, B: 반응형
+    enp('send', 'common', 'kyowontravel');
+</script>
+<!-- Enliple Tracker End -->
+<!-- ADN Tracker[공통] start -->
+<script type="text/javascript">
+    var adn_param = adn_param || [];
+    adn_param.push([{
+        ui: '103614',
+        ut: 'Home'
+    }]);
+</script>
+<script type="text/javascript" defer="" src="../../fin.rainbownine.net/js/adn_tags_2.1.3.js"></script>
+<!-- ADN Tracker[공통] end -->
+<!-- ADN 클로징패널 설치  start -->
+<script type="text/javascript">
+    var adn_panel_param = adn_panel_param || [];
+    adn_panel_param.push([{
+        ui: '103614',
+        ci: '1036140001',
+        gi: '47719'
+    }]);
+</script>
+<script type="text/javascript" async src="../../fin.rainbownine.net/js/across_adn_closed_pc_ad_1.0.4.js"></script>
+<!-- ADN 클로징패널 설치 end -->
+<!-- WIDERPLANET  SCRIPT START 2021.6.9 -->
+<div id="wp_tg_cts" style="display:none;"></div>
+<script type="text/javascript">
+    var wptg_tagscript_vars = wptg_tagscript_vars || [];
+    wptg_tagscript_vars.push(
+        (function () {
+            return {
+                wp_hcuid: "",   /*고객넘버 등 Unique ID (ex. 로그인  ID, 고객넘버 등 )를 암호화하여 대입.
+                *주의 : 로그인 하지 않은 사용자는 어떠한 값도 대입하지 않습니다.*/
+                ti: "52102",	/*광고주 코드 */
+                ty: "Home",	/*트래킹태그 타입 */
+                device: "web"	/*디바이스 종류  (web 또는  mobile)*/
+
+            };
+        }));
+</script>
+<script type="text/javascript" async src="../../cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+<!-- // WIDERPLANET  SCRIPT END 2021.6.9 -->
+<script type="text/javascript" src="http://static.tagmanager.toast.com/tag/view/1798"></script>
+<script type="text/javascript">
+    window.ne_tgm_q = window.ne_tgm_q || [];
+    window.ne_tgm_q.push(
+        {
+            tagType: 'visit',
+            device: 'web'/*web, mobile, tablet*/,
+            uniqValue: '',
+            pageEncoding: 'utf-8'
+        });
+</script>
+<script type="text/javascript" src="../../wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">if (!wcs_add) var wcs_add = {}; wcs_add["wa"] = "a80ccf421f0b88"; if (window.wcs) { wcs_do(); }</script>
+        <!-- [e]footer -->
+    </div>
+    <!-- [e]wrap -->
+    <!-- AceCounter Log Gathering Script V.8.0.2019080601 -->
+    <script language='javascript'>
+        var _AceGID = (function () { var Inf = ['gtc1.acecounter.com', '8080', 'AS4A44817684720', 'AW', '0', 'NaPm,Ncisy', 'ALL', '0']; var _CI = (!_AceGID) ? [] : _AceGID.val; var _N = 0; var _T = new Image(0, 0); if (_CI.join('.').indexOf(Inf[3]) < 0) { _T.src = "https://" + Inf[0] + '/?cookie'; _CI.push(Inf); _N = _CI.length; } return { o: _N, val: _CI }; })();
+        var _AceCounter = (function () { var G = _AceGID; var _sc = document.createElement('script'); var _sm = document.getElementsByTagName('script')[0]; if (G.o != 0) { var _A = G.val[G.o - 1]; var _G = (_A[0]).substr(0, _A[0].indexOf('.')); var _C = (_A[7] != '0') ? (_A[2]) : _A[3]; var _U = (_A[5]).replace(/\,/g, '_'); _sc.src = 'https:' + '//cr.acecounter.com/Web/AceCounter_' + _C + '.js?gc=' + _A[2] + '&py=' + _A[4] + '&gd=' + _G + '&gp=' + _A[1] + '&up=' + _U + '&rd=' + (new Date().getTime()); _sm.parentNode.insertBefore(_sc, _sm); return _sc.src; } })();
+    </script>
+    <!-- AceCounter Log Gathering Script End -->
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>대사관 정보</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="text-center mb-4">대사관 정보</h3>
+					<div class="table-wrap">
+						<table class="table">
+							<thead class="thead-primary">
+								<tr>
+									<th>나라</th>
+									<th>이름</th>
+									<th>위치</th>
+									<th>연락처</th>
+									<th>긴급 연락망</th>
+									<th>홈페이지</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row" class="scope">가나</th>
+									<td>주 가나 대한민국 대사관</td>
+									<td>경기도 성남시 판교로</td>
+									<td>031-1004-1004</td>
+									<td>010-1234-5678</td>
+									<td><a href="#" class="btn btn-primary">Sign Up</a></td>
+								</tr>
+								<tr>
+									<th scope="row" class="scope">.net</th>
+									<td>1 Year</td>
+									<td>$75.00</td>
+									<td>$5.00</td>
+									<td>$5.00</td>
+									<td><a href="#" class="btn btn-primary">Sign Up</a></td>
+								</tr>
+								<tr>
+									<th scope="row" class="scope">.org</th>
+									<td>1 Year</td>
+									<td>$65.00</td>
+									<td>$5.00</td>
+									<td>$5.00</td>
+									<td><a href="#" class="btn btn-primary">Sign Up</a></td>
+								</tr>
+								<tr>
+									<th scope="row" class="scope">.biz</th>
+									<td>1 Year</td>
+									<td>$60.00</td>
+									<td>$5.00</td>
+									<td>$5.00</td>
+									<td><a href="#" class="btn btn-primary">Sign Up</a></td>
+								</tr>
+								<tr>
+									<th scope="row" class="scope">.info</th>
+									<td>1 Year</td>
+									<td>$50.00</td>
+									<td>$5.00</td>
+									<td>$5.00</td>
+									<td><a href="#" class="btn btn-primary">Sign Up</a></td>
+								</tr>
+								<tr>
+									<th scope="row" class="scope border-bottom-0">.me</th>
+									<td class="border-bottom-0">1 Year</td>
+									<td class="border-bottom-0">$45.00</td>
+									<td class="border-bottom-0">$5.00</td>
+									<td class="border-bottom-0">$5.00</td>
+									<td class="border-bottom-0"><a href="#" class="btn btn-primary">Sign Up</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript"
+		src="https://ko.exchange-rates.org/GetCustomContent.aspx?sid=CC000QMXU&amp;type=CurrencyConverter&amp;stk=0KH9104264"
+		charset="utf-8">
+	</script>
+
+<!------------------------------------------------------------------------------->
+
+	<div><a href="https://ko.exchange-rates.org/" rel="nofollow">환율 계산기</a> </div><noscript class="exchanger"><iframe
+			ID="frmExchRatesCC000QMXU" frameborder="10" width="100%" height="100%"
+			src="https://ko.exchange-rates.org/GetCustomContent.aspx?sid=CC000QMXU&amp;type=CurrencyConverter&amp;submit=submit&amp;stk=-06NUV49265"></iframe></noscript>
+
+
+
+	<div class="row main-converter" onkeypress="return FireDefaultButton(event,'btnGo')">
+		<div class="col-sm-8">
+			<label class="block" for="txtAmount">
+				<span>금액:</span>
+			</label>
+			<input id="txtAmount" type="text" stylex="width:100%;" value="1">
+		</div>
+		<div class="col-sm-8">
+			<div class="spacer"></div>
+		</div>
+		<div class="col-sm-8">
+			<label class="block" for="txtFrom">
+				을/를:
+			</label>
+			<div class="ui-autocomplete-widget currency-select">
+				<input class="from currency_select ui-autocomplete-input" id="txtFrom" selected_code="KRW"
+					selected_value="대한민국 원 (KRW)" type="text" value="대한민국 원 (KRW)" autocomplete="off"><a
+					class="inputDrop" href="#" tabindex="-1">▼</a>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<div class="spacer"></div>
+		</div>
+		<div class="col-sm-8">
+			<label class="block" for="txtTo">
+				으로:
+			</label>
+			<div class="ui-autocomplete-widget currency-select">
+				<asp:hiddenfield id="hfTo" runat="server">
+					<input class="to currency_select ui-autocomplete-input" id="txtTo" selected_code="USD"
+						selected_value="미국 달러 (USD)" type="text" value="미국 달러 (USD)" autocomplete="off"><a
+						class="inputDrop" href="#" tabindex="-1">▼</a>
+				</asp:hiddenfield>
+			</div>
+		</div>
+		<div class="col-sm-8 full-converter-btn-container">
+			<input type="button" id="btnGo" class="btn btn-full bottom-align" value="변환"
+				onclick="ConvertMoney(GetAutocompleteValue('txtFrom'), GetAutocompleteValue('txtTo'), document.getElementById('txtAmount').value); return false;">
+		</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>

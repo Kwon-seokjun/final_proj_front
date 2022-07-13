@@ -1,0 +1,32 @@
+HTTrack3.49-2+htsswf+htsjava launched on Thu, 07 Jul 2022 00:00:15 at http://www.tourdaum.com/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://www.tourdaum.com/ -O1 "C:\Dia\Dia" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+00:09:00	Warning: 	Retry after error -4 (Incorrect length (991894 Bytes, 1746348 expected)) at link www.tourdaum.com/upload/banner/main/pc_banner_10.jpg (from www.tourdaum.com/)
+00:16:48	Warning: 	Retry after error -4 (Incorrect length (992665 Bytes, 1733909 expected)) at link www.tourdaum.com/upload/banner/main/pc_banner_11.jpg (from www.tourdaum.com/)
+00:18:03	Warning: 	Retry after error -4 (Incorrect length (994075 Bytes, 1161760 expected)) at link www.tourdaum.com/upload/banner/main/pc_banner_12.jpg (from www.tourdaum.com/)
+00:50:40	Error: 	"Bad Request" (400) at link https://www.googletagmanager.com/gtm.js?id= (from www.tourdaum.com/)
+01:10:55	Warning: 	Retry after error -4 (Incorrect length (2181109 Bytes, 3166162 expected)) at link www.tourdaum.com/upload/product/부여연꽃여행.jpg (from www.tourdaum.com/Product/ProductSelect?productId=DD0193)
+01:11:01	Warning: 	Retry after error -4 (Incorrect length (2699855 Bytes, 3704285 expected)) at link www.tourdaum.com/upload/product/index_12.jpg (from www.tourdaum.com/Product/ProductSelect?productId=DD0192)
+01:11:51	Warning: 	Retry after error -4 (Incorrect length (1417849 Bytes, 3124707 expected)) at link www.tourdaum.com/upload/product/보령머드여행.jpg (from www.tourdaum.com/Product/ProductSelect?productId=DD0191)
+01:12:32	Warning: 	Retry after error -4 (Incorrect length (1005023 Bytes, 1234538 expected)) at link www.tourdaum.com/upload/product/daum_4day_1.jpg (from www.tourdaum.com/Product/ProductSelect?productId=DN0039)
+01:13:10	Warning: 	Retry after error -4 (Incorrect length (5747475 Bytes, 7271721 expected)) at link www.tourdaum.com/upload/product/20220517summer_무주01.jpg (from www.tourdaum.com/Product/ProductSelect?productId=DD0194)
+01:13:13	Warning: 	Retry after error -4 (Incorrect length (1038759 Bytes, 1233431 expected)) at link www.tourdaum.com/upload/product/20220517summer_무주02.jpg (from www.tourdaum.com/Product/ProductSelect?productId=DD0194)
+01:13:20	Warning: 	Retry after error -4 (Incorrect length (7189445 Bytes, 8356293 expected)) at link www.tourdaum.com/upload/product/index_11.jpg (from www.tourdaum.com/Product/ProductSelect?productId=DD0195)
+01:13:45	Warning: 	Retry after error -4 (Incorrect length (3241372 Bytes, 4560511 expected)) at link www.tourdaum.com/upload/product/index_9.jpg (from www.tourdaum.com/Product/ProductSelect?productId=DN0049)
+01:14:47	Warning: 	Retry after error -4 (Incorrect length (909603 Bytes, 1077504 expected)) at link www.tourdaum.com/upload/bbs/0001/20200713_브랜드스토리-상세_1.jpg (from www.tourdaum.com/Customer/NoticeView?nttid=138&searchColumn=&searchword=&searchpreface=&searchpreface2=&searchpreface3=&page=1)
+01:15:15	Warning: 	Retry after error -4 (Incorrect length (1918272 Bytes, 3668717 expected)) at link www.tourdaum.com/upload/review/371827598.jpeg (from www.tourdaum.com/Customer/ReViewList)
+01:15:50	Warning: 	Retry after error -4 (Incorrect length (3253741 Bytes, 4828502 expected)) at link www.tourdaum.com/upload/review/653279126.jpeg (from www.tourdaum.com/Customer/ReViewList)
+01:16:01	Warning: 	Retry after error -4 (Incorrect length (1039381 Bytes, 2163877 expected)) at link www.tourdaum.com/upload/review/837975871.jpg (from www.tourdaum.com/Customer/ReViewList)
+01:18:41	Warning: 	Retry after error -4 (Incorrect length (3536109 Bytes, 4504994 expected)) at link www.tourdaum.com/upload/review/755562550.jpeg (from www.tourdaum.com/Customer/ReViewList)
+01:22:16	Error: 	Exit requested by shell or user
+01:22:23	Error: 	Exit requested by shell or user
+01:22:23	Error: 	Exit requested by shell or user
+* * MIRROR ABORTED! * *
+The current temporary cache is required for any update operation and only contains data downloaded during the present aborted session.
+The former cache might contain more complete information; if you do not want to lose that information, you have to restore it and delete the current cache.
+This can easily be done here by erasing the hts-cache/new.* files]
